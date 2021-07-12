@@ -1,0 +1,16 @@
+table {
+  margin-top: 30px;
+  text-align: center;
+}
+.table > tbody > tr {
+  border-top-color: none !important;
+}
+thead {
+  font-weight: 600;
+}
+/* table > tbody > tr:nth-of-type(even) {
+  background-color: rgb(27, 138, 153);
+}
+table > tbody > tr:nth-of-type(odd) {
+  background-color: rgb(100, 150, 156);
+} */

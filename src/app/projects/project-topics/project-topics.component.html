@@ -1,0 +1,47 @@
+<h2 style="text-align: center;">The table below outline Suggested project topics and respective suopervisors to be chosen from</h2>
+
+<div class="container" mat-table class="mat-elevation-z8" style="margin-left:10%;
+margin-right: 10%;">
+<table>
+  <thead>
+    <tr>
+      <td>
+        S/N.
+      </td>
+      <td>
+        Project Topic
+      </td>
+      <td>
+        Submitted By
+      </td>
+      <td>
+        Submission Date
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let topic of topics;index as id">
+      <td>{{id+ 1}}</td>
+      <td>{{topic.topic}}</td>
+      <td>{{topic.supervisor}}</td>
+      <td>{{topic.date}}</td>
+    </tr>
+  </tbody>
+  <!-- <mat-list role="list">
+    <mat-list-item role="listitem">
+      <span>Project Topic</span>
+      <span class="spacer"></span>
+      <span>Submitted By</span>
+      <span class="spacer"></span>
+      <span>Submission Date</span>
+    </mat-list-item>
+    <mat-list-item role="listitem" *ngFor="let topic of topics">
+      {{topic.topic}}
+      <span class="spacer"></span>
+      {{topic.supervisor}}
+      <span class="spacer"></span>
+      {{topic.date}}
+    </mat-list-item>
+  </mat-list> -->
+</table>
+</div>

@@ -1,8 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-	font-family: sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html, body {
+  height: 100%;
 }
+body {
+  margin: 0;
+  background-color: #3a92e9 !important;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.spacer {
+  flex: 1;
+}
+button {
+  cursor:pointer;
+}
+.placeholder {
+  height: 55px;
+}
+.ml-10 {
+  margin-left: 10px;
+}
+.mr-10 {
+  margin-right: 10px
+}
+.mb-10 {
+  margin-bottom: 100px;
+}
+.mt-10 {
+  margin-top: 10px;
+}
+input {
+  border: none;
+  outline: none;
+  display: table;
+  border-radius: 15px;
+  width: 95%;
+  box-shadow: 2px 2px 0px 0px #686a6d;
+  height: 30px;
+  padding-left: 20px;
+}
+

@@ -1,0 +1,23 @@
+<h2 style="text-align: center;">The table below outline projects already completed</h2>
+
+
+<div class="container" mat-table class="mat-elevation-z8" style="margin-left:10%;
+margin-right: 10%;">
+  <table class="table" width=100%>
+    <thead class="thead">
+      <tr >
+        <td *ngFor='let tHead of tHeads'> {{ tHead }}</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects;index as i">
+        <td> {{ i + 1}}</td>
+        <td><!--style="text-align: start">--> {{ project.topic }} </td>
+        <td> {{ project.author}} </td>
+        <td> {{ project.uploadDate}} </td>
+        <td> {{ project.supervisor}} </td>
+        <td><button mat-button><mat-icon><a href="{{ project.fileUrl }}"></a>download</mat-icon></button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
