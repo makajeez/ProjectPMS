@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { StudentModule } from './student/student.module';
 import { SupervisorModule } from './supervisor/supervisor.module';
+import { MaterialModule } from './material/material.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './User/login/login.component';
 import { SignupComponent } from './User/signup/signup.component';
@@ -15,21 +16,6 @@ import { ProjectTopicsComponent } from './projects/project-topics/project-topics
 import { CompletedProjectComponent } from './projects/completed-project/completed-project.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { MatInputModule } from '@angular/material/input';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatBadgeModule } from '@angular/material/badge';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -46,22 +32,8 @@ import { MatTableModule } from '@angular/material/table';
   imports: [
     SupervisorModule,
     StudentModule,
-    MatListModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatSidenavModule,
-    MatCardModule,
-    MatIconModule,
-    MatSliderModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    MatBadgeModule,
-    MatButtonModule,
     BrowserModule,
+    MaterialModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
