@@ -13,7 +13,9 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'project_topics', component: ProjectTopicsComponent},
   {path: 'completed_project', component: CompletedProjectComponent},
-  {path: 'forget-pw', component: ForgetPasswordComponent}
+  {path: 'forget-pw', component: ForgetPasswordComponent},
+  {path: 'user', loadChildren: './student/student.module#StudentModule'},
+  {path: 'supervisor', loadChildren: './supervisor/supervisor.module#SupervisorModule'}
 ];
 
 @NgModule({

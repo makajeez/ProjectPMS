@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
+import { StudentModule } from './student/student.module';
+import { SupervisorModule } from './supervisor/supervisor.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './User/login/login.component';
 import { SignupComponent } from './User/signup/signup.component';
@@ -42,6 +44,8 @@ import { MatTableModule } from '@angular/material/table';
     CompletedProjectComponent
   ],
   imports: [
+    SupervisorModule,
+    StudentModule,
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
