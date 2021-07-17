@@ -1,0 +1,14 @@
+<div class="card mat-elevation-z8">
+  <h1 style="text-align: center;">Submit Project Topic</h1>
+  <form class="upload-form" [formGroup]='proposalForm'>
+    <div class="full-width">
+      <mat-form-field appearance='outline' class="full-width">
+        <mat-label>Project Topic Name</mat-label>
+        <input matInput FormControlName='topic' placeholder="Design and Implementation">
+        <mat-icon matSuffix>edit</mat-icon>
+      </mat-form-field><br>
+      <input type="file" FormControlName='breakDown' class="full-width">
+      <img src="" alt="NoImg">
+    </div>
+  </form>
+</div>
