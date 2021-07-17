@@ -22,8 +22,6 @@ var UploadProjectTopicComponent = /** @class */ (function () {
             topic: ''
         });
     };
-    UploadProjectTopicComponent.prototype.getExt = function () {
-    };
     UploadProjectTopicComponent = __decorate([
         core_1.Component({
             selector: 'app-upload-project-topic',

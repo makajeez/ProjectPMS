@@ -35,9 +35,6 @@ var SignupComponent = /** @class */ (function () {
         var val = this.signupForm.value;
         console.log(val);
         return this.http.post(this.ApiUrl, JSON.stringify(val));
-        // this.service.registerUser(val) //.subscribe(res: any => 
-        //alert(res.toString())
-        // );
     };
     SignupComponent = __decorate([
         core_1.Component({

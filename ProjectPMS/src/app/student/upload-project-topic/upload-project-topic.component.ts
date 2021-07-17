@@ -20,7 +20,4 @@ export class UploadProjectTopicComponent implements OnInit {
         topic: ''
       });
   }
-  getExt() {
-
-  }
 }

@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
 
   // entities = ['Student', 'Project Supervisor', 'Project Coordinator'];
 
-  constructor(private fb: FormBuilder,private http: HttpClient, private service: SharedService) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private service: SharedService) { }
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
@@ -32,12 +32,8 @@ export class SignupComponent implements OnInit {
   }
   signUp(): any {
     // const val = this.signupForm.value;
-    let val = this.signupForm.value;
+    const val = this.signupForm.value;
     console.log(val);
-    
     return this.http.post(this.ApiUrl, JSON.stringify(val));
-    // this.service.registerUser(val) //.subscribe(res: any => 
-      //alert(res.toString())
-     // );
   }
 }
