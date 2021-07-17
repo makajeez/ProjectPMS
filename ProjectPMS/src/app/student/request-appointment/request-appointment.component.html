@@ -1,0 +1,19 @@
+<h2>Send Visitation Request For Your Supervisor</h2>
+<div>
+  <form class="card mat-elevation-z8" [formGroup]='reqForm'>
+    <mat-form-field appearance='outline' size='sm'>
+      <mat-label>Choose a Date</mat-label>
+      <input matInput formControlName='date'>
+      <mat-icon matSuffix>event</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance='outline'>
+      <mat-label>Pick a Time</mat-label>
+      <input matInput formControlName='time'>
+      <mat-icon matSuffix>schedule</mat-icon>
+    </mat-form-field>
+    <button mat-button (click)='save()'>
+      <mat-label>Submit</mat-label> &nbsp;
+      <mat-icon>send</mat-icon>
+    </button>
+  </form>
+</div>
