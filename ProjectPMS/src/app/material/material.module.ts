@@ -17,6 +17,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 /**
  * Material Module
@@ -42,6 +43,7 @@ import { MatTableModule } from '@angular/material/table';
     MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,
+    MatCheckboxModule
   ],
   providers: []
 })

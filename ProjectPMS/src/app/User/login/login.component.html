@@ -1,30 +1,32 @@
-<!-- <div class="placeholder"></div> -->
-<div class="card mat-elevation-z8">
-  <h1 style="text-align: center;">Login</h1>
-  <h3 style="text-align: center; padding-left: 15px; color: rgb(104, 102, 100);"> Let's Get You In.</h3>
+<div class="containerr">
+  <div class="containerr">
+    <div class="card mat-elevation-z20">
+      <h1 style="text-align: center;">Login</h1>
+      <h3 style="text-align: center; padding-left: 15px; color: rgb(104, 102, 100);"> Let's Get You In.</h3>
 
-  <form action="POST" [formGroup]="loginForm">
-    <mat-form-field appearance='legacy' class="full-width">
-      <mat-label>Registration Number</mat-label>
-      <input matInput placeholder="CST/16/C0M/00543" formControlName='reg_no'>
-      <mat-icon matSuffix>edit</mat-icon>
-      <mat-error align='start' class="error">must be exactly 16 characters</mat-error>
-      <mat-hint align='end'>{{this.loginForm.get('reg_no')?.value?.length || 0}}/16</mat-hint>
-    </mat-form-field>
-    <mat-form-field appearance='legacy' class="full-width">
-      <mat-label>Password</mat-label>
-      <input matInput placeholder="Shhh! Enter Something Super Secret" formControlName='pwd'>
-      <mat-icon matSuffix>visibility</mat-icon>
-      <mat-error align='start' class="error" *ngIf="this.loginForm.get('pwd')?.errors">must be at least 8 characters long</mat-error>
-    </mat-form-field>
+      <form method="POST" [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field appearance='legacy' class="full-width">
+          <mat-label>Registration Number</mat-label>
+          <input matInput placeholder="CST/16/C0M/00543" formControlName='RegistrationNo'>
+          <mat-icon matSuffix>edit</mat-icon>
+          <mat-error align='start' class="error">must be exactly 16 characters</mat-error>
+          <mat-hint align='end'>{{this.loginForm.get('RegistrationNo')?.value?.length || 0}}/16</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance='legacy' class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Shhh! Enter Something Super Secret" formControlName='Password'>
+          <mat-icon matSuffix>visibility</mat-icon>
+          <mat-error align='start' class="error" *ngIf="this.loginForm.get('Password')?.errors">must be at least 8 characters long</mat-error>
+        </mat-form-field>
 
-    <button class="login-button" (click)='login()'>Login</button>
-    <h4 style="text-align: center;">Don't have an account?  <a [routerLink]="['/signup']">SignUp</a> here.</h4>
-  </form>
+        <button mat-button class="button" [disabled]="this.loginForm.invalid"><mat-spinner [diameter]='29' *ngIf="loading"></mat-spinner><span *ngIf='!loading'>Login</span></button>
+        <h4 style="text-align: center;">Don't have an account?  <a [routerLink]="['/signup']">SignUp</a> here.</h4>
+      </form>
+    </div>
+  </div>
 </div>
-
-
+<br>
 <div>
-  form: {{this.loginForm.get('pwd')?.errors}}
+  form: {{this.loginForm.value  | json}}
 </div>
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms'
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-request-appointment',
@@ -8,16 +8,18 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms'
 })
 export class RequestAppointmentComponent implements OnInit {
   reqForm!: FormGroup;
+  loading = false;
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.reqForm = this.fb.group({
       date : '',
       time : ''
-    })
+    });
   }
-  save() {
-    console.log(this.reqForm)
+  save(): any {
+    console.log(this.reqForm);
     return false;
   }
 }

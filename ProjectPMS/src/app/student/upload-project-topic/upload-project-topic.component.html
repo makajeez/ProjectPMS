@@ -1,14 +1,20 @@
-<div class="card mat-elevation-z8">
+<div class="card mat-elevation-z20" style="min-height: 300px !important;">
   <h1 style="text-align: center;">Submit Project Topic</h1>
-  <form class="upload-form" [formGroup]='proposalForm'>
-    <div class="full-width">
-      <mat-form-field appearance='outline' class="full-width">
+  <form [formGroup]='proposalForm' method="POST">
+      <mat-form-field appearance='legacy' class="full-width">
         <mat-label>Project Topic Name</mat-label>
-        <input matInput FormControlName='topic' placeholder="Design and Implementation">
+        <input matInput formControlName='Topic' placeholder="Design and Implementation">
         <mat-icon matSuffix>edit</mat-icon>
       </mat-form-field><br>
-      <input type="file" FormControlName='breakDown' class="full-width">
-      <img src="" alt="NoImg">
-    </div>
+
+      <mat-checkbox class="ml-50" formControlName='CheckAbstract' color='primary' style="display:flex;" >Add Project Abstract or Breakdown</mat-checkbox>
+      <div class="ml-30" *ngIf="this.proposalForm.get('CheckAbstract')?.value === true">
+        <input type="file" (change)="readUrl($event)" formControlName='Abstract' class="full-width">
+        <img [src]="src" [alt]="src" width="50" height="50" *ngIf="src">
+      </div>
+      <br>
+      <button class="button" mat-button [disabled]="this.proposalForm.invalid"><mat-icon>file_upload</mat-icon> Upload Topic</button>
   </form>
 </div>
+<br>
+<div>{{this.proposalForm.value | json}}</div>

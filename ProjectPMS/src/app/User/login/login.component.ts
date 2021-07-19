@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { SharedService } from 'src/app/shared-service';
+// import { SharedService } from 'src/app/shared-service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { User } from '../../_models/user';
 
 @Component({
   selector: 'app-login',
@@ -9,20 +12,35 @@ import { SharedService } from 'src/app/shared-service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  loading = false;
   loginForm!: FormGroup;
-  users = [];
+  apiUrl = 'http://127.0.0.1:8000/signup/';
+  users: User[] = [];
 
-  constructor(private route: Router, private fb: FormBuilder, private serve: SharedService) { }
+  constructor(
+    private route: Router,
+    private fb: FormBuilder,
+    private http: HttpClient,
+    // private serve: SharedService
+    ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): any {
     this.loginForm = this.fb.group({
-      reg_no: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
-      pwd: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
+      RegistrationNo: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
+      Password: ['', [Validators.required, Validators.minLength(8)]]
     });
+    this.auth();
   }
 
   login(): void {
-    console.log(this.loginForm);
+    this.loading = !this.loading;
+    const body = this.loginForm;
+    console.log(body);
 
+  }
+  auth(): any{
+    this.http.get(this.apiUrl).subscribe(data => {
+    console.log(data);
+    });
   }
 }

@@ -1,20 +1,7 @@
-
-.signup-button {
-  background-color: #1976d2;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  font-weight: 700;
-  border: none;
-  outline: none;
-  display: flex;
-  border-radius: 15px;
-  width: 35%;
-  height: 30px;
-  margin: 0 auto;
+a {
+  text-decoration: none;
+  color: #e94412;
 }
-
-
 button {
   align-content: center;
 }
@@ -25,9 +12,6 @@ button {
 }
 form {
   transition: all 1s ease;
-}
-.error {
-  color: rgb(182, 59, 59);
 }
 span {
   width: 15%;

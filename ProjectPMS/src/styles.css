@@ -11,16 +11,6 @@ body {
 .spacer {
   flex: 1;
 }
-.card {
-  /* background-color: rgb(235, 231, 231); */
-  color: #1976d2;
-  width: 90%;
-  min-height: 80%;
-  margin: 0 auto;
-  border-radius: 20px;
-  padding: 10px 10px;
-  text-align: center;
-}
 .full-width {
   width: 90%;
 }
@@ -55,3 +45,27 @@ input[type='file'] {
   border-radius: 0px;
   align-self: start !important  ;
 }
+.card {
+  /* background-color: rgb(235, 231, 231); */
+  color: #1976d2;
+  /* width: 100%; */
+  min-height: 100% !important;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 10px 10px;
+  text-align: center;
+}
+.button {
+  background-color: #e94412;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  border: none;
+  outline: none;
+  display: flex;
+  border-radius: 15px;
+  width: 35%;
+  height: 30px;
+  margin: 0 auto;
+}
+

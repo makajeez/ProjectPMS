@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 // import { Router } from '@angular/router';
-import { SharedService } from 'src/app/shared-service';
+// import { SharedService } from 'src/app/shared-service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -15,9 +16,10 @@ export class SignupComponent implements OnInit {
   hide = true;
   signupForm!: FormGroup;
 
-  // entities = ['Student', 'Project Supervisor', 'Project Coordinator'];
-
-  constructor(private fb: FormBuilder, private http: HttpClient, private service: SharedService) { }
+  constructor(private fb: FormBuilder,
+              private http: HttpClient,
+              private route: Router
+    ) { }
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
@@ -25,15 +27,23 @@ export class SignupComponent implements OnInit {
       FirstName: ['', [Validators.required, Validators.minLength(3)]],
       LastName: ['', [Validators.required, Validators.minLength(3)]],
       Email: ['', [Validators.required, Validators.email]],
-      Phone: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+      Phone: [null, [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
       RegistrationNo: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
       Password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
   signUp(): any {
-    // const val = this.signupForm.value;
+    this.loading = true;
     const val = this.signupForm.value;
-    console.log(val);
-    return this.http.post(this.ApiUrl, JSON.stringify(val));
+    return this.http.post(this.ApiUrl, JSON.stringify(val)).subscribe({
+      next: data => {
+      this.loading = false;
+      this.route.navigate(['login']);
+      },
+      error: error => {
+        this.loading = false;
+        console.log(error.message);
+      }
+    });
   }
 }

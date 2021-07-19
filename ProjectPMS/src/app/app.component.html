@@ -3,18 +3,22 @@
   <span class="name">Undergraduate PMS</span>
     <div class="spacer"></div>
     <!-- <button class="" [routerLink]="['/completed_project']">Compiled Project</button> -->
-    <button class="ml-10" [routerLink]="['/upload_project']" *ngIf='login'>Submit Proposal</button>
-    <button class="ml-10" [routerLink]="['/request_appointment']" *ngIf='login'>Request Appointment</button>
+    <!-- <button class="ml-10" [routerLink]="['/upload_project']" *ngIf='login'>Submit Proposal</button> -->
+    <!-- <button class="ml-10" [routerLink]="['/request_appointment']" *ngIf='login'>Request Appointment</button> -->
     <div class="spacer"></div>
-    
+
     <input type="text" style="width: 20%;" placeholder="Search Projects">
 
     <div class="spacer"></div>
     <button class="" [routerLink]="['/login']" *ngIf='!login' (click)="toggle()"><mat-icon matPrefix>login</mat-icon></button>
     <button *ngIf='login' (click)="toggle()"><mat-icon>logout</mat-icon></button>
-    <button class="ml-10 mr-10" [routerLink]="['/signup']" *ngIf='!login'>Sign Up</button>
+    <button class="ml-10 mr-10" [routerLink]="['/signup']" *ngIf='!login'><mat-icon>person_add</mat-icon><!--Sign Up--></button>
 </div>
 <div class="placeholder"></div>
 <div class="container">
-<router-outlet class="mb-10"></router-outlet>
+  <div class="container">
+    <div class="container">
+      <router-outlet class="mb-10"></router-outlet>
+    </div>
+  </div>
 </div>

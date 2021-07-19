@@ -1,6 +1,6 @@
 <h2>Send Visitation Request For Your Supervisor</h2>
 <div>
-  <form class="card mat-elevation-z8" [formGroup]='reqForm'>
+  <form class="card mat-elevation-z20" [formGroup]='reqForm' (ngSubmit)='save()' >
     <mat-form-field appearance='outline' size='sm'>
       <mat-label>Choose a Date</mat-label>
       <input matInput formControlName='date'>
@@ -11,9 +11,9 @@
       <input matInput formControlName='time'>
       <mat-icon matSuffix>schedule</mat-icon>
     </mat-form-field>
-    <button mat-button (click)='save()'>
-      <mat-label>Submit</mat-label> &nbsp;
-      <mat-icon>send</mat-icon>
+    <button class="button" mat-button [disabled]="this.reqForm.invalid">
+      <mat-spinner *ngIf='loading' [diameter]='30'></mat-spinner>
+      <span *ngIf="!loading"><mat-icon>upload_file</mat-icon> Request Visit</span>
     </button>
   </form>
 </div>
