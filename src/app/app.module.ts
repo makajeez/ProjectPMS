@@ -19,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { MatNativeDateModule } from '@angular/material/core';
+import { E404Component } from './e404/e404.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     SignupComponent,
     HomeComponent,
     ProjectTopicsComponent,
-    CompletedProjectComponent
+    CompletedProjectComponent,
+    E404Component
   ],
   imports: [
     SupervisorModule,
