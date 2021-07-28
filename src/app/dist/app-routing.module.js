@@ -9,6 +9,7 @@ exports.__esModule = true;
 exports.AppRoutingModule = void 0;
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var e404_component_1 = require("./e404/e404.component");
 var home_component_1 = require("./home/home.component");
 var completed_project_component_1 = require("./projects/completed-project/completed-project.component");
 var project_topics_component_1 = require("./projects/project-topics/project-topics.component");
@@ -21,7 +22,8 @@ var routes = [
     { path: 'project_topics', component: project_topics_component_1.ProjectTopicsComponent },
     { path: 'completed_project', component: completed_project_component_1.CompletedProjectComponent },
     { path: 'student', loadChildren: './student/student.module#StudentModule' },
-    { path: 'supervisor', loadChildren: './supervisor/supervisor.module#SupervisorModule' }
+    { path: 'supervisor', loadChildren: './supervisor/supervisor.module#SupervisorModule' },
+    { path: '**', component: e404_component_1.E404Component }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
