@@ -17,6 +17,7 @@ var view_chapter_status_component_1 = require("./view-chapter-status/view-chapte
 var material_module_1 = require("../material/material.module");
 var forms_1 = require("@angular/forms");
 var update_profile_component_1 = require("./update-profile/update-profile.component");
+var home_component_1 = require("../home/home.component");
 var StudentModule = /** @class */ (function () {
     function StudentModule() {
     }
@@ -38,7 +39,8 @@ var StudentModule = /** @class */ (function () {
                     { path: 'update_profile', component: update_profile_component_1.UpdateProfileComponent },
                     { path: 'upload_chapter', component: upload_chapters_component_1.UploadChaptersComponent },
                     { path: 'request_appointment', component: request_appointment_component_1.RequestAppointmentComponent },
-                    { path: 'view_status', component: view_chapter_status_component_1.ViewChapterStatusComponent }
+                    { path: 'view_status', component: view_chapter_status_component_1.ViewChapterStatusComponent },
+                    { path: 'student', component: home_component_1.HomeComponent }
                 ])
             ],
             exports: [

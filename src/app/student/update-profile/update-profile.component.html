@@ -1,1 +1,58 @@
-<p>update-profile works!</p>
+<div class="container">
+  <div class="container">
+    <div class="card mat-elevation-z20">
+      <h1 style="text-align: center;">Update Profile</h1>
+
+      <form method="POST" [formGroup]='updateForm' (ngSubmit)='update()'>
+          <table class="full-width">
+            <tr>
+              <td>
+                <mat-form-field appearance='legacy' class="full-width">
+                  <mat-label>First Name</mat-label>
+                  <input matInput placeholder="Buhari" formControlName='FirstName'>
+                  <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field appearance='legacy' class="full-width">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput placeholder="Doe" formControlName='LastName'>
+                  <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+
+          <mat-form-field appearance='legacy' class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="buhari.alhassan0@gmail.com" formControlName='Email'>
+            <mat-icon matSuffix>mail</mat-icon>
+            <mat-error *ngIf="this.updateForm.get('Email')?.hasError('email')">Enter a valid mail address</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance='legacy' class="full-width">
+            <mat-label>Phone Number</mat-label>
+            <span matPrefix>+234 &nbsp;</span>
+            <input type='tel' matInput placeholder="08145044481" formControlName='Phone'>
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error *ngIf="this.updateForm.get('Phone')?.hasError('minlength')">Phone number less than 11 digits</mat-error>
+            <mat-error *ngIf="this.updateForm.get('Phone')?.hasError('maxlength')">Phone number greater than 11 digits</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance='legacy' class="full-width">
+            <mat-label>Registration Number</mat-label>
+            <input matInput placeholder="CST/16/C0M/00543" formControlName='RegistrationNo'>
+            <mat-icon matSuffix>edit</mat-icon>
+            <mat-error *ngIf="this.updateForm.get('RegistrationNo')?.hasError('minlength') || this.updateForm.get('RegistrationNo')?.hasError('maxlength')">must be exactly 16 characters</mat-error>
+            <mat-hint>{{this.updateForm.get('RegistrationNo')?.value.length || 0}}/16</mat-hint>
+          </mat-form-field>
+          <div style='margin-left: opx; margin-bottom: 15px;'>Update Profile Pics: <input type="file" formControlName='ProfilePics'></div>
+          <br>
+          <button mat-button class="button" [disabled]="this.updateForm.invalid"><mat-spinner *ngIf='loading' [diameter]='29'></mat-spinner><span *ngIf='!loading'>Sign Up</span></button>
+
+
+      </form>
+    </div>
+  </div>
+</div>
+<br>
+<div>{{this.updateForm.value | json}}</div>
+

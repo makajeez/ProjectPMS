@@ -1,0 +1,32 @@
+a {
+  text-decoration: none;
+  color: #e94412;
+}
+button {
+  align-content: center;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+form {
+  transition: all 1s ease;
+}
+span {
+  width: 15%;
+}
+input {
+  margin: 0 auto !important;
+  height: 30px !important;
+  padding: 10px !important;
+}
+table {
+  width: 95% !important;
+  /* align-self: center !important; */
+  display: table;
+  margin: 0 auto;
+}
+/* mat-form-field {
+  height: 30px !important;
+} */

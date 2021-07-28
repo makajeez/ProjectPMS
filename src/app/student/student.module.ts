@@ -8,6 +8,8 @@ import { ViewChapterStatusComponent } from './view-chapter-status/view-chapter-s
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { HomeComponent } from '../home/home.component';
+
 
 
 
@@ -28,7 +30,8 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
       {path: 'update_profile', component: UpdateProfileComponent},
       {path: 'upload_chapter', component: UploadChaptersComponent},
       {path: 'request_appointment', component: RequestAppointmentComponent},
-      {path: 'view_status', component: ViewChapterStatusComponent}
+      {path: 'view_status', component: ViewChapterStatusComponent},
+      {path: 'student', component: HomeComponent}
     ])
   ],
   exports: [
