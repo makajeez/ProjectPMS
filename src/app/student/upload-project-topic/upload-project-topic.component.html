@@ -1,0 +1,19 @@
+<div class="card mat-elevation-z20" style="min-height: 300px !important;">
+  <h1 style="text-align: center;">Submit Project Topic</h1>
+  <form [formGroup]='proposalForm' method="POST">
+      <mat-form-field [draggable]='true' appearance='legacy' class="full-width">
+        <mat-label>Project Topic Name</mat-label>
+        <input matInput formControlName='Topic' placeholder="Design and Implementation">
+        <mat-icon matSuffix>edit</mat-icon>
+      </mat-form-field><br>
+
+      <div>
+        <input type="file" (change)="readUrl($event)" formControlName='Abstract' class="full-width">
+        <img [src]="src" [alt]="src" width="50" height="50" *ngIf="src">
+      </div>
+      <br>
+      <button class="button" mat-button [disabled]="this.proposalForm.invalid"><mat-icon>file_upload</mat-icon> Upload Topic</button>
+  </form>
+</div>
+<br>
+<div>{{this.proposalForm.value | json}}</div>

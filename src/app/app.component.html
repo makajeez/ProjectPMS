@@ -1,0 +1,24 @@
+
+<div class="toolbar" role="banner">
+  <span class="name">Undergraduate PMS</span>
+    <div class="spacer"></div>
+    <button ngbTooltip='Update Profile'><mat-icon>person</mat-icon></button>
+    <div class="spacer"></div>
+    <button mat-button ngbTooltip='Download Project Guidelines'><a href="http://localhost:8000/media/failFast.pdf"></a><mat-icon>download</mat-icon>Guidelines</button>
+    <div class="spacer"></div>
+
+    <input type="text" style="width: 20%;" placeholder="Search Projects">
+
+    <div class="spacer"></div>
+    <button class="" [routerLink]="['/login']" ngbTooltip='Login'><mat-icon matPrefix>login</mat-icon></button>
+    <button ngbTooltip='Logout'><mat-icon>logout</mat-icon></button>
+    <button class="ml-10 mr-10" [routerLink]="['/user']" ngbTooltip='Sign Up'><mat-icon>person_add</mat-icon><!--Sign Up--></button>
+</div>
+<div class="placeholder"></div>
+<div class="container">
+  <div class="container">
+    <div class="container">
+      <router-outlet class="mb-10"></router-outlet>
+    </div>
+  </div>
+</div>

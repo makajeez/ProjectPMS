@@ -1,0 +1,20 @@
+<h2 style="text-align: center;">Send Visitation Request For Your Supervisor</h2>
+<div class="card mat-elevation-z20">
+  <form  [formGroup]='reqForm' (ngSubmit)='save()' >
+    <mat-form-field [draggable]='true' appearance='legacy' class="full-width">
+      <mat-label>Choose a Date</mat-label>
+      <input matInput formControlName='picker' placeholder="(dd/mm/yyyy)">
+      <mat-icon matSuffix>event</mat-icon>
+    </mat-form-field>
+    <mat-form-field [draggable]='true' appearance='outline' class="full-width">
+      <mat-label>Pick a Time</mat-label>
+      <input matInput formControlName='time'>
+      <mat-icon matSuffix>schedule</mat-icon>
+    </mat-form-field>
+    <button class="button" mat-button [disabled]="this.reqForm.invalid">
+      <mat-spinner *ngIf='loading' [diameter]='30'></mat-spinner>
+      <span *ngIf="!loading"><mat-icon>upload_file</mat-icon> Request Visit </span>
+    </button>
+  </form>
+</div><br>
+<div>{{ this.reqForm.value | json }}</div>
