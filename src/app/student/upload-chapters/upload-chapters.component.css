@@ -1,0 +1,6 @@
+table {
+  width: 55% !important;
+  /* align-self: center !important; */
+  display: table;
+  margin: 0 auto;
+}

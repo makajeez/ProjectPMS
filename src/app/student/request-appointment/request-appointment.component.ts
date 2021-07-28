@@ -9,14 +9,16 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 export class RequestAppointmentComponent implements OnInit {
   reqForm!: FormGroup;
   loading = false;
+  lecturers = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', "Mal. S M Tanimu"];
 
   constructor(private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
     this.reqForm = this.fb.group({
-      picker : [null, Validators.required],
-      time : ['', Validators.required]
+      Lecturer: ['', Validators.required],
+      Date: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
+      Time: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
     });
   }
   save(): any {

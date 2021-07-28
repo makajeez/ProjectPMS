@@ -1,14 +1,24 @@
-<div class="mat-elevation-z20 card">
-  <form method="POST">
-    <mat-form-field [draggable]='true' appearance='outline' class="full-width">
-      <mat-label>Project Title</mat-label>
-      <input matInput placeholder='Design and Implementation of GPS tracking System'>
-    </mat-form-field>
-    <mat-form-field [draggable]='true' appearance='outline' class="full-width" disabled>
-      <mat-label>Upload Date</mat-label>
-      <input matInput >
-    </mat-form-field>
-
-    <button mat-button class="button">Upload</button>
-  </form>
+<div>
+  <h2 style="text-align: center;">Submit A Project Topic </h2>
+  <div class="mat-elevation-z20 card">
+    <form method="POST" [formGroup]='uploadTopicForm' >
+      <mat-form-field [draggable]='true' appearance='outline' class="full-width">
+        <mat-label>Project Title</mat-label>
+        <input matInput placeholder='Design and Implementation of GPS tracking System' formControlName='Title'>
+      </mat-form-field>
+      <mat-form-field [draggable]='true' appearance='outline' class="full-width">
+        <mat-label>Submitted By</mat-label>
+        <input matInput placeholder='Dr.Faruk Umar Ambursa' formControlName='SubmittedBy'>
+      </mat-form-field>
+      <mat-form-field [draggable]='true' appearance='outline' class="full-width" [hidden]='true'>
+        <mat-label>Submitted By</mat-label>
+        <input matInput placeholder='Dr.Faruk Umar Ambursa' formControlName='Date'>
+      </mat-form-field>
+      <button mat-button class="button" [disabled]='this.uploadTopicForm.invalid'>Upload</button>
+    </form>
+  </div>  
+</div>
+<br>
+<div>
+  {{this.uploadTopicForm.value | json}}
 </div>

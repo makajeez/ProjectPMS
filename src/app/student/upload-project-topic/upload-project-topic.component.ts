@@ -8,11 +8,13 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class UploadProjectTopicComponent implements OnInit {
   src = '';
+  lecturers = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', "Mal. S M Tanimu"]
   proposalForm!: FormGroup;
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.proposalForm = this.fb.group({
+      Lecturer: ['', Validators.required],
       Topic : ['', Validators.required],
       Abstract: '' // this.url
     });

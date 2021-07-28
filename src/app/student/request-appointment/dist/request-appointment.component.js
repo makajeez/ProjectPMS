@@ -8,14 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.RequestAppointmentComponent = void 0;
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var RequestAppointmentComponent = /** @class */ (function () {
     function RequestAppointmentComponent(fb) {
         this.fb = fb;
+        this.loading = false;
+        this.lecturers = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', "Mal. S M Tanimu"];
     }
     RequestAppointmentComponent.prototype.ngOnInit = function () {
         this.reqForm = this.fb.group({
-            date: '',
-            time: ''
+            Lecturer: ['', forms_1.Validators.required],
+            Date: ['', [forms_1.Validators.required, forms_1.Validators.minLength(8), forms_1.Validators.maxLength(10)]],
+            Time: ['', [forms_1.Validators.required, forms_1.Validators.minLength(5), forms_1.Validators.maxLength(5)]]
         });
     };
     RequestAppointmentComponent.prototype.save = function () {

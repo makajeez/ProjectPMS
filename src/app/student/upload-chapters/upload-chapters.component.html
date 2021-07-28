@@ -1,15 +1,31 @@
 <div class="card mat-elevation-z20" style="min-height: 300px !important;">
-  <h1 style="text-align: center;">Submit Project Topic</h1>
+  <h1 style="text-align: center;">Submit Chapter Documentation</h1>
   <form method="POST" [formGroup]='ProjectChapterForm' (ngSubmit)="publish()">
-     <div class="center">
-        <mat-form-field [draggable]='true' appearance='outline' style="color: red !important;">
-          <mat-label>Choose Chapter Number</mat-label>
-          <mat-select formControlName='ChapterNumber'>
-            <mat-option *ngFor="let chapter of chapters" [value]='chapter'>
-              {{ chapter }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+      <div class="center">
+        <table>
+          <tr>
+            <td>
+              <mat-form-field [draggable]='true' appearance='outline' style="color: red !important;">
+                <mat-label>Select Lecturer</mat-label>
+                <mat-select formControlName='Lecturer'>
+                  <mat-option *ngFor="let lecturer of lecturers" [value]='lecturer'>
+                    {{ lecturer }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field [draggable]='true' appearance='outline' style="color: red !important;">
+                <mat-label>Choose Chapter Number</mat-label>
+                <mat-select formControlName='ChapterNumber'>
+                  <mat-option *ngFor="let chapter of chapters" [value]='chapter'>
+                    {{ chapter }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
       </div>
 
       <input type="file" (change)="readUrl($event)" formControlName='ChapterFile' class="full-width">

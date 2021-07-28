@@ -13,9 +13,11 @@ var UploadProjectTopicComponent = /** @class */ (function () {
     function UploadProjectTopicComponent(fb) {
         this.fb = fb;
         this.src = '';
+        this.lecturers = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', "Mal. S M Tanimu"];
     }
     UploadProjectTopicComponent.prototype.ngOnInit = function () {
         this.proposalForm = this.fb.group({
+            Lecturer: ['', forms_1.Validators.required],
             Topic: ['', forms_1.Validators.required],
             Abstract: '' // this.url
         });
