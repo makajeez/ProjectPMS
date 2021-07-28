@@ -12,8 +12,7 @@ var AppComponent = /** @class */ (function () {
     function AppComponent(router) {
         this.router = router;
         this.title = 'Project_Monitoring_System';
-        // @Input() login: boolean;
-        this.options = ['one', 'two', 'three'];
+        this.isMenuCollapsed = true;
     }
     AppComponent.prototype.ngOnInit = function () {
         // this.router.navigate(['/signup']);

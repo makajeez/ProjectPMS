@@ -23,7 +23,7 @@ p {
   top: 0;
   left: 0;
   right: 0;
-  height: 45px;
+  /* height: 45px; */
   display: flex;
   align-items: center;
   background-color: #3a92e9;
@@ -36,6 +36,7 @@ p {
   border-right-color: transparent;
   border-left-color: transparent;
   transition: all 1s ease;
+  z-index: 9999;
 }
 .toolbar:hover {
   background-color: black;

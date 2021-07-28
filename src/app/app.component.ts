@@ -9,8 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'Project_Monitoring_System';
-  // @Input() login: boolean;
-  options = ['one', 'two', 'three'];
+  public isMenuCollapsed = true;
 
   constructor(public router: Router) {
 
