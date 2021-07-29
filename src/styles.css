@@ -7,8 +7,15 @@ html, body {
 }
 body {
   margin: 0;
-  /* background-color: #3a92e9 !important; */
+  background-color: #51606e !important;
+  color: black !important;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+::ng-deep .mat-form-field-label {
+  color: red !important;
+}
+h1 {
+  color: black;
 }
 .spacer {
   flex: 1;
@@ -30,6 +37,9 @@ button {
 }
 .mb-10 {
   margin-bottom: 100px;
+}
+.mb-30 {
+  margin-bottom: 30px;
 }
 .mt-10 {
   margin-top: 10px;

@@ -13,7 +13,7 @@ export class UploadChaptersComponent implements OnInit {
   ProjectChapterForm!: FormGroup;
   src = '';
   loading = false;
-  lecturers = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', "Mal. S M Tanimu"]
+  supervisors = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', 'Mal. S M Tanimu'];
   chapters = ['Chapter One', 'Chapter Two', 'Chapter Three', 'Chapter Four', 'Chapter Five'];
 
   constructor(
@@ -25,7 +25,7 @@ export class UploadChaptersComponent implements OnInit {
   ngOnInit(): void {
     this.ProjectChapterForm = this.fb.group({
       ChapterNumber: ['', Validators.required],
-      Lecturer: ['', Validators.required],
+      Supervisor: ['', Validators.required],
       ChapterFile: [null, Validators.required]
     });
   }

@@ -21,6 +21,7 @@ var StudentListComponent = /** @class */ (function () {
         return this.http.get('http://127.0.0.1:8000/user/').subscribe(function (data) {
             var _a;
             (_a = _this.students).push.apply(_a, data);
+            console.log(data);
         });
     };
     StudentListComponent = __decorate([

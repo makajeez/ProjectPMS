@@ -17,13 +17,13 @@ var UploadChaptersComponent = /** @class */ (function () {
         this.ApiUrl = '127.0.0.1:8000';
         this.src = '';
         this.loading = false;
-        this.lecturers = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', "Mal. S M Tanimu"];
+        this.supervisors = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', 'Mal. S M Tanimu'];
         this.chapters = ['Chapter One', 'Chapter Two', 'Chapter Three', 'Chapter Four', 'Chapter Five'];
     }
     UploadChaptersComponent.prototype.ngOnInit = function () {
         this.ProjectChapterForm = this.fb.group({
             ChapterNumber: ['', forms_1.Validators.required],
-            Lecturer: ['', forms_1.Validators.required],
+            Supervisor: ['', forms_1.Validators.required],
             ChapterFile: [null, forms_1.Validators.required]
         });
     };

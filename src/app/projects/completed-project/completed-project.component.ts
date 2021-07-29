@@ -7,42 +7,42 @@ import { ProjectTopicsComponent } from '../project-topics/project-topics.compone
   styleUrls: ['./completed-project.component.css']
 })
 export class CompletedProjectComponent implements OnInit {
-  tHeads = ['S/N', 'Project Title', 'Author', 'Date', 'Supervisor', 'downloads'];
+  tHeads = [];
 
   projects = [
     {
       author: 'Usman Shehu Gezawa',
       topic: 'Design and implementation of an Image Recognition System',
       supervisor: 'Saminu Muhammad',
-      fileUrl: '../assets/faiFast.pdf',
+      fileUrl: 'failFast.pdf',
       uploadDate: '9/23/2013',
     },
     {
       author: 'Usman Shehu Gezawa',
       topic: 'Image Recognition System',
       supervisor: 'Saminu Muhammad',
-      fileUrl: '../assets/faiFast.pdf',
+      fileUrl: 'failFast.pdf',
       uploadDate: '9/23/2013',
     },
     {
       author: 'Usman Shehu Gezawa',
       topic: 'Image Recognition System',
       supervisor: 'Saminu Muhammad',
-      fileUrl: '../assets/faiFast.pdf',
+      fileUrl: 'failFast.pdf',
       uploadDate: '9/23/2013',
     },
     {
       author: 'Usman Shehu Gezawa',
       topic: 'Image Recognition System',
       supervisor: 'Saminu Muhammad',
-      fileUrl: '../assets/faiFast.pdf',
+      fileUrl: 'failFast.pdf',
       uploadDate: '9/23/2013',
     },
     {
       author: 'Usman Shehu Gezawa',
       topic: 'Image Recognition System',
       supervisor: 'Saminu Muhammad',
-      fileUrl: '../assets/faiFast.pdf',
+      fileUrl: 'failFast.pdf',
       uploadDate: '9/23/2013',
     },
   ];

@@ -1,9 +1,9 @@
 <div class="containerr">
   <div class="containerr">
-    <div class="card mat-elevation-z20">
-      <h1 style="text-align: center;">Login</h1>
+    <div class="card mat-elevation-z20" style="margin-top: 30px;">
+      <h1 style="text-align: center; font-weight: 600;">Login</h1>
       <h3 style="text-align: center; padding-left: 15px; color: rgb(104, 102, 100);"> Let's Get You In.</h3>
-
+      <hr color="#1976d2">
       <form method="POST" [formGroup]="loginForm" (ngSubmit)="login()">
         <mat-form-field appearance='legacy' class="full-width">
           <mat-label>Registration Number</mat-label>
@@ -20,7 +20,7 @@
         </mat-form-field>
 
         <button mat-button class="button" [disabled]="this.loginForm.invalid"><mat-spinner [diameter]='29' *ngIf="loading"></mat-spinner><span *ngIf='!loading'>Login</span></button>
-        <h4 style="text-align: center;">Don't have an account?  <a [routerLink]="['/signup']">SignUp</a> here.</h4>
+        <h4 style="text-align: center;">Don't have an account?  <a [routerLink]="['/user']">SignUp</a> here.</h4>
       </form>
     </div>
   </div>
