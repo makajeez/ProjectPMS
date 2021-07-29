@@ -1,7 +1,10 @@
-<div class="card">
+<div class="card mat-elevation-z20">
   <table class="table table-striped">
     <thead class="thead">
       <tr>
+        <td>
+          <h3>S/No</h3>
+        </td>
         <td>
           <h3>Fullname</h3>
         </td>
@@ -14,7 +17,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="" style="margin-bottom: 20px; border-radius: 10px;" *ngFor="let student of students">
+      <tr class="" style="margin-bottom: 20px; border-radius: 10px;" *ngFor="let student of students;index as i">
+        <td>
+          {{ i + 1}}
+        </td>
         <td>
           {{student.FirstName}} {{student.LastName}} 
         </td>
