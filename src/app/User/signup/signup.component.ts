@@ -33,6 +33,7 @@ export class SignupComponent implements OnInit {
       Email: ['', [Validators.required, Validators.email]],
       Phone: [null, [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
       RegistrationNo: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
+      Photo: 'default.jpg',
       Password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }

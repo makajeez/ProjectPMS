@@ -1,1 +1,5 @@
-<p>student-list works!</p>
+<div class="card">
+  <div class="card mat-elevation-z20" *ngFor="let student of students">
+    <span style="width: 500px;">{{student.FirstName}} &nbsp;{{student.LastName}}&nbsp; &nbsp;| &nbsp; &nbsp; {{student.RegistrationNo}} |  &nbsp; &nbsp;  0{{student.Phone}}</span>
+  </div>
+</div>

@@ -4,5 +4,6 @@
 mat-icon {
   font-size: 50pt;
   /* display: flex; */
+  margin-left: -24px;
   justify-self: center;
 }

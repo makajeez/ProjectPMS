@@ -13,7 +13,7 @@ var RequestAppointmentComponent = /** @class */ (function () {
     function RequestAppointmentComponent(fb) {
         this.fb = fb;
         this.loading = false;
-        this.lecturers = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', "Mal. S M Tanimu"];
+        this.lecturers = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', 'Mal. S M Tanimu'];
     }
     RequestAppointmentComponent.prototype.ngOnInit = function () {
         this.reqForm = this.fb.group({

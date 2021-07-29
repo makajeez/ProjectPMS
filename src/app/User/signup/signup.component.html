@@ -6,128 +6,57 @@
 
 
       <form method="POST" [formGroup]='signupForm' (ngSubmit)='signUp()'>
-        <!-- <div class="center">
-          <mat-form-field appearance='fill'>
-            <mat-label>Choose Entity</mat-label>
-            <mat-select formControlName='entity'> (change)="eListener(this.signupForm.controls.entity)">
-              <mat-option *ngFor="let entity of entities" [value]='entity'>
-                {{ entity }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div> -->
+        <table class="full-width">
+          <tr>
+            <td>
+              <mat-form-field appearance='legacy' class="full-width">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="Buhari" formControlName='FirstName'>
+                <mat-icon matSuffix>person</mat-icon>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance='legacy' class="full-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Doe" formControlName='LastName'>
+                <mat-icon matSuffix>person</mat-icon>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
 
-
-        <!-- <div class="student"></div> *ngIf="signupForm.value.entity === 'Student'"> -->
-          <table class="full-width">
-            <tr>
-              <td>
-                <mat-form-field appearance='legacy' class="full-width">
-                  <mat-label>First Name</mat-label>
-                  <input matInput placeholder="Buhari" formControlName='FirstName'>
-                  <mat-icon matSuffix>person</mat-icon>
-                </mat-form-field>
-              </td>
-              <td>
-                <mat-form-field appearance='legacy' class="full-width">
-                  <mat-label>Last Name</mat-label>
-                  <input matInput placeholder="Doe" formControlName='LastName'>
-                  <mat-icon matSuffix>person</mat-icon>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table>
-
-          <mat-form-field appearance='legacy' class="full-width">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="buhari.alhassan0@gmail.com" formControlName='Email'>
-            <mat-icon matSuffix>mail</mat-icon>
-            <mat-error *ngIf="this.signupForm.get('Email')?.hasError('email')">Enter a valid mail address</mat-error>
-          </mat-form-field>
-          <mat-form-field appearance='legacy' class="full-width">
-            <mat-label>Phone Number</mat-label>
-            <span matPrefix align='start'>+234 &nbsp;</span>
-            <input type='tel' matInput placeholder="08145044481" formControlName='Phone'>
-            <mat-icon matSuffix>phone</mat-icon>
-            <mat-error *ngIf="this.signupForm.get('Phone')?.hasError('minlength')">Phone number less than 11 digits</mat-error>
-            <mat-error *ngIf="this.signupForm.get('Phone')?.hasError('maxlength')">Phone number greater than 11 digits</mat-error>
-          </mat-form-field>
-          <mat-form-field appearance='legacy' class="full-width">
-            <mat-label>Registration Number</mat-label>
-            <input matInput placeholder="CST/16/C0M/00543" formControlName='RegistrationNo'>
-            <mat-icon matSuffix>edit</mat-icon>
-            <mat-error *ngIf="this.signupForm.get('RegistrationNo')?.hasError('minlength') || this.signupForm.get('RegistrationNo')?.hasError('maxlength')">must be exactly 16 characters</mat-error>
-            <mat-hint>{{this.signupForm.get('RegistrationNo')?.value.length || 0}}/16</mat-hint>
-          </mat-form-field>
-          <mat-form-field appearance='legacy' class="full-width">
-            <mat-label>Password</mat-label>
-            <input matInput [type]="hide? 'password': 'text'" placeholder="hhh! Enter Something Super Secret" formControlName='Password'>
-            <mat-icon matSuffix (click)="hide = !hide">{{ hide?'visibility':'visibility_off'}} </mat-icon>
-            <mat-error *ngIf="this.signupForm.get('Password')?.hasError('minlength')">must be at least 8 characters long</mat-error>
-          </mat-form-field>
-          <br>
-
-          <button mat-button class="button" [disabled]="this.signupForm.invalid"><mat-spinner *ngIf='loading' [diameter]='29'></mat-spinner><span *ngIf='!loading'>Sign Up</span></button>
-          <h4 style="text-align: center;">Already have an account?  <a [routerLink]="['/login']">Login</a></h4>
-        <!-- </div>
-        <div class="projsuper" *ngIf="signupForm.value.entity === 'Project Supervisor'">
-          <label for="fName">
-            FirstName:
-            <input type="text" formControlName="fName" placeholder="Enter First Name">
-          </label><br>
-          <label for="lName">
-            LastName:
-            <input type="text" formControlName="lName" placeholder="Enter Last Name">
-          </label><br>
-          <label for="email">
-            Email:
-            <input type="email" formControlName="email" placeholder="Enter Mail Address">
-          </label><br>
-          <label for="phone">
-            Phone:
-            <input type="tel" formControlName="phone" placeholder="Enter Phone Number">
-          </label><br>
-          <div formGroupName='pwGroup'>
-            <label for="password">
-              Password:
-              <input type="password" formControlName="pw1" placeholder="Shhh! Enter Something Super Secret" autocomplete="">
-            </label><br>
-            <label for="re-password">
-              Retype Password:
-              <input type="password" formControlName="pw2" placeholder="Re-Type SecretCode Please" autocomplete="">
-            </label>
-          </div>
-        </div>
-        <div class="projcoord" *ngIf="signupForm.value.entity === 'Project Coordinator'">
-          <label for="fName">
-            FirstName:
-            <input type="text" formControlName="fName" placeholder="Enter First Name">
-          </label><br>
-          <label for="lName">
-            LastName:
-            <input type="text" formControlName="lName" placeholder="Enter Last Name">
-          </label><br>
-          <label for="email">
-            Email:
-            <input type="email" formControlName="email" placeholder="Enter Mail Address">
-          </label><br>
-          <label for="phone">
-            Phone:
-            <input type="tel" formControlName="phone" placeholder="Enter Phone Number">
-          </label><br>
-          <div formGroupName='pwGroup'>
-            <label for="password">
-              Password:
-              <input type="password" formControlName="pw1" placeholder="Shhh! Enter Something Super Secret" autocomplete="">
-            </label><br>
-            <label for="re-password">
-              Retype Password:
-              <input type="password" formControlName="pw2" placeholder="Re-Type SecretCode Please" autocomplete="">
-            </label>
-          </div>
-        </div>
-        <br> -->
-
+        <mat-form-field appearance='legacy' class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="buhari.alhassan0@gmail.com" formControlName='Email'>
+          <mat-icon matSuffix>mail</mat-icon>
+          <mat-error *ngIf="this.signupForm.get('Email')?.hasError('email')">Enter a valid mail address</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance='legacy' class="full-width">
+          <mat-label>Phone Number</mat-label>
+          <span matPrefix align='start'>+234 &nbsp;</span>
+          <input type='tel' matInput placeholder="08145044481" formControlName='Phone'>
+          <mat-icon matSuffix>phone</mat-icon>
+          <mat-error *ngIf="this.signupForm.get('Phone')?.hasError('minlength')">Phone number less than 11 digits</mat-error>
+          <mat-error *ngIf="this.signupForm.get('Phone')?.hasError('maxlength')">Phone number greater than 11 digits</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance='legacy' class="full-width">
+          <mat-label>Registration Number</mat-label>
+          <input matInput placeholder="CST/16/C0M/00543" formControlName='RegistrationNo'>
+          <mat-icon matSuffix>edit</mat-icon>
+          <mat-error *ngIf="this.signupForm.get('RegistrationNo')?.hasError('minlength') || this.signupForm.get('RegistrationNo')?.hasError('maxlength')">must be exactly 16 characters</mat-error>
+          <mat-hint>{{this.signupForm.get('RegistrationNo')?.value.length || 0}}/16</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance='legacy' class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hide? 'password': 'text'" placeholder="hhh! Enter Something Super Secret" formControlName='Password'>
+          <mat-icon matSuffix (click)="hide = !hide">{{ hide?'visibility':'visibility_off'}} </mat-icon>
+          <mat-error *ngIf="this.signupForm.get('Password')?.hasError('minlength')">must be at least 8 characters long</mat-error>
+        </mat-form-field>
+        <br>
+        <!-- <input type="file" [value]="this.signupForm.get('Photo')?.value" formControlName='Photo' [hidden]='true'> -->
+        <br>
+        <button mat-button class="button" [disabled]="this.signupForm.invalid"><mat-spinner *ngIf='loading' [diameter]='29'></mat-spinner><span *ngIf='!loading'>Sign Up</span></button>
+        <h4 style="text-align: center;">Already have an account?  <a [routerLink]="['/login']">Login</a></h4>
       </form>
     </div>
   </div>

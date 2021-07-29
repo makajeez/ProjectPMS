@@ -28,6 +28,7 @@ var SignupComponent = /** @class */ (function () {
             Email: ['', [forms_1.Validators.required, forms_1.Validators.email]],
             Phone: [null, [forms_1.Validators.required, forms_1.Validators.minLength(11), forms_1.Validators.maxLength(11)]],
             RegistrationNo: ['', [forms_1.Validators.required, forms_1.Validators.minLength(16), forms_1.Validators.maxLength(16)]],
+            Photo: 'default.jpg',
             Password: ['', [forms_1.Validators.required, forms_1.Validators.minLength(8)]]
         });
     };
