@@ -19,7 +19,8 @@ var UploadProjectTopicComponent = /** @class */ (function () {
         this.proposalForm = this.fb.group({
             Lecturer: ['', forms_1.Validators.required],
             Topic: ['', forms_1.Validators.required],
-            Abstract: '' // this.url
+            Abstract: '',
+            Status: 'pending'
         });
     };
     //   readUrl(event: any): void {

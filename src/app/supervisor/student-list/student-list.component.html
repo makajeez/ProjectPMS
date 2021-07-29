@@ -1,5 +1,30 @@
 <div class="card">
-  <div class="card mat-elevation-z20" *ngFor="let student of students">
-    <span style="width: 500px;">{{student.FirstName}} &nbsp;{{student.LastName}}&nbsp; &nbsp;| &nbsp; &nbsp; {{student.RegistrationNo}} |  &nbsp; &nbsp;  0{{student.Phone}}</span>
-  </div>
+  <table class="table table-striped">
+    <thead class="thead">
+      <tr>
+        <td>
+          <h3>Fullname</h3>
+        </td>
+        <td>
+          <h3>RegistrationNo</h3>
+        </td>
+        <td>
+          <h3>Phone Number</h3>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="" style="margin-bottom: 20px; border-radius: 10px;" *ngFor="let student of students">
+        <td>
+          {{student.FirstName}} {{student.LastName}} 
+        </td>
+        <td>
+        {{student.RegistrationNo}} 
+        </td>
+        <td>
+          0{{student.Phone}}
+        </td>
+      </tr>
+    </tbody>
+</table>
 </div>

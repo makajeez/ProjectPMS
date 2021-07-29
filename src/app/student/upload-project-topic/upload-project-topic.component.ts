@@ -16,7 +16,8 @@ export class UploadProjectTopicComponent implements OnInit {
     this.proposalForm = this.fb.group({
       Lecturer: ['', Validators.required],
       Topic : ['', Validators.required],
-      Abstract: '' // this.url
+      Abstract: '', // this.url
+      Status: 'pending'
     });
   }
 //   readUrl(event: any): void {
