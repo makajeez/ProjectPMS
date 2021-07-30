@@ -11,11 +11,13 @@ body {
   color: black !important;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-::ng-deep .mat-form-field-label {
-  color: red !important;
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #1976d2;
 }
 h1 {
-  color: black;
+  color: black !important;
+  text-align: center;
+  font-weight: 700 !important;
 }
 .spacer {
   flex: 1;
@@ -44,26 +46,29 @@ button {
 .mt-10 {
   margin-top: 10px;
 }
+.mt-50 {
+  margin-top: 50px;
+}
 input {
   border: none;
   outline: none;
   display: inline-flex;
-  /* border-radius: 15px; */
-  /* box-shadow: 2px 2px 0px 0px #686a6d; */
   height: 30px;
-  /* padding-left: 20px; */
 }
 input[type='file'] {
   border-radius: 0px;
   align-self: start !important  ;
 }
 .card {
-  /* background-color: rgb(235, 231, 231); */
   color: #1976d2;
-  /* width: 100%; */
   min-height: 100% !important;
   margin: 0 auto;
   border-radius: 20px;
+  /* border-left-color: #1976d2; */
+  border-right-color: transparent;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-width: 10px;
   padding: 10px 10px;
   text-align: center;
 }

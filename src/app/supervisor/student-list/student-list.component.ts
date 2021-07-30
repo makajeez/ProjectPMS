@@ -18,7 +18,7 @@ export class StudentListComponent implements OnInit {
 
   getUsers(): object {
     return this.http.get('http://127.0.0.1:8000/user/').subscribe(data => {
-      this.students.push(...data);
+      // this.students.push(...data);
       console.log(data);
     });
   }

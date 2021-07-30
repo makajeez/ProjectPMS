@@ -17,6 +17,7 @@ var forms_1 = require("@angular/forms");
 var material_module_1 = require("../material/material.module");
 var review_submissions_component_1 = require("./review-submissions/review-submissions.component");
 var student_list_component_1 = require("./student-list/student-list.component");
+var upload_completed_project_component_1 = require("./upload-completed-project/upload-completed-project.component");
 var SupervisorModule = /** @class */ (function () {
     function SupervisorModule() {
     }
@@ -27,7 +28,8 @@ var SupervisorModule = /** @class */ (function () {
                 upload_project_topics_component_1.UploadProjectTopicsComponent,
                 supervisor_component_1.SupervisorComponent,
                 review_submissions_component_1.ReviewSubmissionsComponent,
-                student_list_component_1.StudentListComponent
+                student_list_component_1.StudentListComponent,
+                upload_completed_project_component_1.UploadCompletedProjectComponent
             ],
             imports: [
                 common_1.CommonModule,
@@ -38,7 +40,8 @@ var SupervisorModule = /** @class */ (function () {
                     { path: 'review', component: review_submissions_component_1.ReviewSubmissionsComponent },
                     { path: 'make_appointment', component: make_appointment_component_1.MakeAppointmentComponent },
                     { path: 'upload_topics', component: upload_project_topics_component_1.UploadProjectTopicsComponent },
-                    { path: 'student_list', component: student_list_component_1.StudentListComponent }
+                    { path: 'student_list', component: student_list_component_1.StudentListComponent },
+                    { path: 'submit_project_work', component: upload_completed_project_component_1.UploadCompletedProjectComponent }
                 ])
             ]
         })

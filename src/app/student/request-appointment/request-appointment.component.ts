@@ -19,6 +19,7 @@ export class RequestAppointmentComponent implements OnInit {
       Lecturer: ['', Validators.required],
       Date: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
       Time: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+      Status: 'pending'
     });
   }
   save(): any {

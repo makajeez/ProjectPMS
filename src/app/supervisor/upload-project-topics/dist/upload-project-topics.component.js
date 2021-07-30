@@ -12,14 +12,17 @@ var forms_1 = require("@angular/forms");
 var UploadProjectTopicsComponent = /** @class */ (function () {
     function UploadProjectTopicsComponent(fb) {
         this.fb = fb;
-        this.date = new Date;
+        this.date = new Date();
     }
     UploadProjectTopicsComponent.prototype.ngOnInit = function () {
         this.uploadTopicForm = this.fb.group({
             Title: ['', forms_1.Validators.required],
             SubmittedBy: ['', forms_1.Validators.required],
-            Date: this.date.getDay() + "/" + this.date.getMonth() + "/" + this.date.getFullYear()
+            Date: this.date.getDate() + "/" + (this.date.getMonth() + 1) + "/" + this.date.getFullYear()
         });
+    };
+    UploadProjectTopicsComponent.prototype.logData = function () {
+        console.log(this.uploadTopicForm.value);
     };
     UploadProjectTopicsComponent = __decorate([
         core_1.Component({

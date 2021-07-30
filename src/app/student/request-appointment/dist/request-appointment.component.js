@@ -19,7 +19,8 @@ var RequestAppointmentComponent = /** @class */ (function () {
         this.reqForm = this.fb.group({
             Lecturer: ['', forms_1.Validators.required],
             Date: ['', [forms_1.Validators.required, forms_1.Validators.minLength(8), forms_1.Validators.maxLength(10)]],
-            Time: ['', [forms_1.Validators.required, forms_1.Validators.minLength(5), forms_1.Validators.maxLength(5)]]
+            Time: ['', [forms_1.Validators.required, forms_1.Validators.minLength(5), forms_1.Validators.maxLength(5)]],
+            Status: 'pending'
         });
     };
     RequestAppointmentComponent.prototype.save = function () {

@@ -26,7 +26,8 @@ export class UploadChaptersComponent implements OnInit {
     this.ProjectChapterForm = this.fb.group({
       ChapterNumber: ['', Validators.required],
       Supervisor: ['', Validators.required],
-      ChapterFile: [null, Validators.required]
+      ChapterFile: [null, Validators.required],
+      Status: 'pending'
     });
   }
 

@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UploadProjectTopicsComponent implements OnInit {
   uploadTopicForm!: FormGroup;
-  date: Date = new Date
+  date: Date = new Date();
 
   constructor(private fb: FormBuilder) { }
 
@@ -16,8 +16,11 @@ export class UploadProjectTopicsComponent implements OnInit {
     this.uploadTopicForm = this.fb.group({
       Title: ['', Validators.required],
       SubmittedBy: ['', Validators.required],
-      Date: `${this.date.getDay()}/${this.date.getMonth()}/${this.date.getFullYear()}`
-    })
+      Date: `${this.date.getDate()}/${this.date.getMonth() + 1}/${this.date.getFullYear()}`
+    });
+  }
+  logData(): void {
+    console.log(this.uploadTopicForm.value);
   }
 
 }

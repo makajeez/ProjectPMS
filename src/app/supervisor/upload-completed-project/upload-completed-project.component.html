@@ -1,0 +1,29 @@
+<div>
+  <div class="container">
+    <h1>Submit Compiled Project Work</h1>
+    <hr color="#1976d2">
+  </div>
+  <div class="mat-elevation-z20 card">
+    <form method="POST" [formGroup]='projectForm' class="mt-50">
+      <mat-form-field [draggable]='true' appearance='outline' class="full-width">
+        <mat-label>Project Title</mat-label>
+        <input matInput placeholder='Design and Implementation of GPS tracking System' formControlName='ProjectTitle'>
+      </mat-form-field>
+      <mat-form-field [draggable]='true' appearance='outline' class="full-width">
+        <mat-label>Authored By</mat-label>
+        <input matInput placeholder='Usman Shehu Gezawa' formControlName='Author'>
+      </mat-form-field>
+      <mat-form-field [draggable]='true' appearance='outline' class="full-width">
+        <mat-label>Submitted By</mat-label>
+        <input matInput placeholder='Dr.Faruk Umar Ambursa' formControlName='Supervisor'>
+      </mat-form-field>
+      <input type="file" formControlName="File" class="mb-30">
+      <br>
+      <button mat-button class="button" [disabled]='this.projectForm.invalid' >Upload</button>
+    </form>
+  </div>
+</div>
+<br>
+<div>
+  {{this.projectForm.value | json}}
+</div>

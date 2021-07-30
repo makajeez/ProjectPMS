@@ -24,7 +24,8 @@ var UploadChaptersComponent = /** @class */ (function () {
         this.ProjectChapterForm = this.fb.group({
             ChapterNumber: ['', forms_1.Validators.required],
             Supervisor: ['', forms_1.Validators.required],
-            ChapterFile: [null, forms_1.Validators.required]
+            ChapterFile: [null, forms_1.Validators.required],
+            Status: 'pending'
         });
     };
     UploadChaptersComponent.prototype.readUrl = function (event) {
