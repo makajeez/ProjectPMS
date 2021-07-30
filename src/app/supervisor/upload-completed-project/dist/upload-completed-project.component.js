@@ -13,6 +13,7 @@ var UploadCompletedProjectComponent = /** @class */ (function () {
     function UploadCompletedProjectComponent(fb) {
         this.fb = fb;
         this.date = new Date();
+        this.supervisors = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', 'Mal. S M Tanimu'];
     }
     UploadCompletedProjectComponent.prototype.ngOnInit = function () {
         this.projectForm = this.fb.group({

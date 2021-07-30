@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UploadCompletedProjectComponent implements OnInit {
   projectForm!: FormGroup;
   date: Date = new Date();
+  supervisors = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', 'Mal. S M Tanimu'];
 
   constructor(private fb: FormBuilder) { }
 
