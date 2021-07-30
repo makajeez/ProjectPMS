@@ -13,17 +13,17 @@
         <mat-label>Authored By</mat-label>
         <input matInput placeholder='Usman Shehu Gezawa' formControlName='Author'>
       </mat-form-field>
+      <mat-form-field [draggable]='true' appearance='outline'>
+        <mat-label>Supervisor</mat-label>
+        <mat-select formControlName='Supervisor'>
+          <mat-option *ngFor="let supervisor of supervisors" [value]='supervisor'>
+            {{ supervisor }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
       <div class="center">
-        <mat-form-field [draggable]='true' appearance='outline'>
-          <mat-label>Supervisor</mat-label>
-          <mat-select formControlName='Supervisor'>
-            <mat-option *ngFor="let supervisor of supervisors" [value]='supervisor'>
-              {{ supervisor }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <input type="file" formControlName="File" class="mb-30">
       </div>
-      <input type="file" formControlName="File" class="mb-30">
       <br>
       <button mat-button class="button" [disabled]='this.projectForm.invalid' >Upload</button>
     </form>
