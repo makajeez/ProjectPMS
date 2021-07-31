@@ -1,0 +1,29 @@
+$ Student can request appointment with project supervisor.
+$ Student can upload project topic in other words project topic proposal with files or abstract attached to it, possibly with chapter one
+student can update his/her profile
+$student can upload chapters
+$student can view accepted chapters or corrections to make
+student can view overall scores.
+student can converse with project Supervisors
+
+$ Supervisors can accept or reject and set appointment
+supervisor can accept or reject project proposal
+$ supervisor can upload project topics for students to choose from
+supervisor can score student's work
+supervisor can monitor student's progress, different color codes would be used for different scenarios
+
+
+
+<mat-icon>settings</mat-icon>
+<mat-icon>account_circle</mat-icon>
+<mat-icon>done</mat-icon>
+<mat-icon>delete_outline visibility logout  schedule manage_accounts verified event dashboard login </mat-icon><br>
+<mat-icon>visibility_off check_circle_outline question_answer close menu cancel more_vert add send notifications password</mat-icon><br>
+<mat-icon>edit school person_add notifications_active mail phone qr_code file_upload file_download upload_file attachment</mat-icon>
+
+#User.serializer
+
+#User.views
+{
+  
+}
