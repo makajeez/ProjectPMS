@@ -22,7 +22,7 @@ h1 {
 h2 {
   color: black !important;
   text-align: center;
-  font-weight: 300 !important;
+  /* font-weight: 300 !important; */
 }
 .spacer {
   flex: 1;
