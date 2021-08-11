@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-student-list',
@@ -8,18 +9,20 @@ import { Observable } from 'rxjs';
   styleUrls: ['./student-list.component.css']
 })
 export class StudentListComponent implements OnInit {
-  students: any = [];
+  students: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private serve: AppService
+    ) { }
 
   ngOnInit(): void {
     this.getUsers();
   }
 
-  getUsers(): object {
-    return this.http.get('http://127.0.0.1:8000/user/').subscribe(data => {
-      // this.students.push(...data);
-      console.log(data);
+  getUsers(): void{
+    this.serve.getUsers().subscribe((data: any) => {
+      this.students = data;
     });
   }
 

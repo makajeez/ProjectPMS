@@ -19,11 +19,17 @@
       <tbody>
         <tr *ngFor="let project of projects;index as i">
           <td> {{ i + 1}}</td>
-          <td><!--style="text-align: start">--> {{ project.topic }} </td>
-          <td> {{ project.author}} </td>
-          <td> {{ project.uploadDate}} </td>
+          <td><!--style="text-align: start">--> {{ project.project_title }} </td>
+          <td> {{ project.student}} </td>
+          <td> {{ project.year}} </td>
           <td> {{ project.supervisor}} </td>
-          <td><button mat-button><mat-icon><a href="./assets/{{project.fileUrl}}" target="_blank"></a>download</mat-icon></button></td>
+          <td>
+            <a [href]="url+project.project_file" target="_blank">
+              <button mat-button>
+                <mat-icon>download</mat-icon>
+              </button>
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>

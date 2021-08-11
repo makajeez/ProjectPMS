@@ -10,7 +10,7 @@ import { SignupComponent } from './User/signup/signup.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'user', component: SignupComponent},
+  {path: 'signup', component: SignupComponent},
   {path: 'project_topics', component: ProjectTopicsComponent},
   {path: 'completed_project', component: CompletedProjectComponent},
   {path: 'student', loadChildren: './student/student.module#StudentModule'},

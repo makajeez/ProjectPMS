@@ -9,7 +9,7 @@ import { MaterialModule } from '../material/material.module';
 import { ReviewSubmissionsComponent } from './review-submissions/review-submissions.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { UploadCompletedProjectComponent } from './upload-completed-project/upload-completed-project.component';
-import { ReviewAppointmentsComponent } from './review-appointments/review-appointments.component';
+// import { ReviewAppointmentsComponent } from './review-appointments/review-appointments.component';
 
 
 
@@ -20,8 +20,7 @@ import { ReviewAppointmentsComponent } from './review-appointments/review-appoin
     SupervisorComponent,
     ReviewSubmissionsComponent,
     StudentListComponent,
-    UploadCompletedProjectComponent,
-    ReviewAppointmentsComponent
+    UploadCompletedProjectComponent
   ],
   imports: [
     CommonModule,

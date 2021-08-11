@@ -27,6 +27,8 @@ var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var ngx_toastr_1 = require("ngx-toastr");
 var http_1 = require("@angular/common/http");
 var core_2 = require("@angular/material/core");
+var e404_component_1 = require("./e404/e404.component");
+var app_service_1 = require("./app.service");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -38,7 +40,8 @@ var AppModule = /** @class */ (function () {
                 signup_component_1.SignupComponent,
                 home_component_1.HomeComponent,
                 project_topics_component_1.ProjectTopicsComponent,
-                completed_project_component_1.CompletedProjectComponent
+                completed_project_component_1.CompletedProjectComponent,
+                e404_component_1.E404Component
             ],
             imports: [
                 supervisor_module_1.SupervisorModule,
@@ -60,7 +63,7 @@ var AppModule = /** @class */ (function () {
                 http_1.HttpClientModule,
                 ngx_toastr_1.ToastrModule.forRoot()
             ],
-            providers: [],
+            providers: [app_service_1.AppService],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

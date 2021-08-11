@@ -10,22 +10,36 @@ exports.RequestAppointmentComponent = void 0;
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var RequestAppointmentComponent = /** @class */ (function () {
-    function RequestAppointmentComponent(fb) {
+    function RequestAppointmentComponent(route, toastr, fb, serve) {
+        this.route = route;
+        this.toastr = toastr;
         this.fb = fb;
+        this.serve = serve;
         this.loading = false;
-        this.lecturers = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', 'Mal. S M Tanimu'];
+        this.supervisors = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', 'Mal. S M Tanimu'];
     }
     RequestAppointmentComponent.prototype.ngOnInit = function () {
         this.reqForm = this.fb.group({
-            Lecturer: ['', forms_1.Validators.required],
-            Date: ['', [forms_1.Validators.required, forms_1.Validators.minLength(8), forms_1.Validators.maxLength(10)]],
-            Time: ['', [forms_1.Validators.required, forms_1.Validators.minLength(5), forms_1.Validators.maxLength(5)]],
-            Status: 'pending'
+            date: ['', [forms_1.Validators.required, forms_1.Validators.minLength(8), forms_1.Validators.maxLength(10)]],
+            time: ['', [forms_1.Validators.required, forms_1.Validators.minLength(5), forms_1.Validators.maxLength(5)]],
+            student: this.serve.currentUser.username,
+            supervisor: ['', forms_1.Validators.required],
+            status: 'Pending'
         });
     };
     RequestAppointmentComponent.prototype.save = function () {
-        console.log(this.reqForm);
-        return false;
+        var _this = this;
+        this.serve.requestAppointment(this.reqForm).subscribe({
+            next: function (data) {
+                _this.toastr.success("Meeting Request Sent", '', { timeOut: 3000 });
+                _this.route.navigate(['/']);
+            },
+            error: function (error) {
+                // this.toastr.error(`Upload Not Made`, 'Error', {timeOut: 3000});
+                _this.toastr.success("There Was An Error While Processing Request", '', { timeOut: 3000 });
+                // this.route.navigate(['/']);
+            }
+        });
     };
     RequestAppointmentComponent = __decorate([
         core_1.Component({

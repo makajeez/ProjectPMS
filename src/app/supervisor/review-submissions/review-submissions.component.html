@@ -1,5 +1,5 @@
 <div class="container mb-30">
-  <h1>Review Proposal and Chapter Submissions</h1>
+  <h1>Take Actions on Proposal and Chapter Submissions</h1>
 </div>
 <hr color="black" style="font-weight: 700;">
 
@@ -7,35 +7,20 @@
   <h2>Proposals</h2>
   <hr color="white">
 </div>
+<div class="mat-elevation-z20" *ngFor='let proposal of proposals' style="display: flex; border-radius: 10px; padding: 10px; height: 50px; align-items: center; margin: 20px; background-color: white;">
+  <span style="font-weight: 700;">{{proposal.student}}</span>
+  <div class="spacer"></div>
+  <span style="font-weight: 700;">{{proposal.proposal_title}}</span>
 
-
-<!-- Div to LOop through -->
-<div class="mat-elevation-z20" style="display: flex; border-radius: 10px; padding-left: 10px; height: 50px; align-items: center; margin: 20px; background-color: white;">
-  <span style="font-weight: 700;">Buhari Ahmed | CST/16/COM/00543</span>
-  <div class="spacer"></div>
-  <span class='nav-item'>
-    <button ngbTooltip='Download Proposal'>
-      <mat-icon>download</mat-icon>
-    </button>
-  </span>
+    <a [href]="url+proposal.proposal_file" [download]="url+proposal.proposal_file" target="_blank">
+      <button class="btn">
+        <mat-icon>download</mat-icon>
+      </button>
+    </a>
   <div class="spacer"></div>
   <div class="spacer"></div>
-  <button mat-button color='primary'> Accept </button>
-  <button mat-button color='warn'> Reject</button>
-</div>
-
-<div class="mat-elevation-z20" style="display: flex; border-radius: 10px; padding-left: 10px; height: 50px; align-items: center; margin: 20px; background-color: white;">
-  <span style="font-weight: 700;">Buhari Ahmed | CST/16/COM/00543</span>
-  <div class="spacer"></div>
-  <span class='nav-item'>
-    <button ngbTooltip='Download Proposal'>
-      <mat-icon>download</mat-icon>
-    </button>
-  </span>
-  <div class="spacer"></div>
-  <div class="spacer"></div>
-  <button mat-button color='primary'> Accept </button>
-  <button mat-button color='warn'> Reject</button>
+  <button class="btn btn-success" (click)='acceptProp(proposal)'> Accept </button>
+  <button class="btn btn-danger" (click)='rejectProp(proposal)' style="margin-left: 5px;"> Reject</button>
 </div>
 
 <div class="container">
@@ -45,18 +30,22 @@
 </div>
 
 <!-- To loop through -->
-<div class="mat-elevation-z20" style="display: flex; border-radius: 10px; padding-left: 10px; height: 50px; align-items: center; margin: 20px; background-color: white;">
-  <span style="font-weight: 700;">Buhari Ahmed | CST/16/COM/00543</span>
+<div class="mat-elevation-z20" *ngFor="let chapter of chapters" style="display: flex; border-radius: 10px; padding: 10px; height: 50px; align-items: center; margin: 20px; background-color: white;">
+  <span style="font-weight: 700;">{{ chapter.student}}</span>
+  <div class="spacer"></div>
+  <span style="font-weight: 700;">{{ chapter.chapter_number}}</span>
   <div class="spacer"></div>
   <span class='nav-item'>
-    <button ngbTooltip='Download Proposal'>
-      <mat-icon>download</mat-icon>
-    </button>
+    <a [href]="url+chapter.chapter_file" target="_blank">
+      <button class="btn">
+        <mat-icon>download</mat-icon>
+      </button>
+    </a>
   </span>
   <div class="spacer"></div>
   <div class="spacer"></div>
-  <button mat-button color='primary'> Accept </button>
-  <button mat-button color='warn'> Reject</button>
+  <button class="btn btn-success" (click)="acceptMeet(chapter)"> Accept </button>
+  <button class="btn btn-danger" style="margin-left: 5px;" (click)="rejectMeet(chapter)"> Reject</button>
 </div>
 
 <div class="container">
@@ -64,21 +53,13 @@
   <h2>Meeting Requests</h2>
   <hr color="white">
 </div>
-
-<div class="mat-elevation-z20" style="display: flex; border-radius: 10px; padding-left: 10px; height: 50px; align-items: center; margin: 20px; background-color: white;">
-  <span style="font-weight: 700;">Buhari Ahmed | CST/16/COM/00543</span>
+<div class="mat-elevation-z20" *ngFor='let meeting of filteredMeeting' style="display: flex; border-radius: 10px; padding: 10px; height: 50px; align-items: center; margin: 20px; background-color: white;">
+  <span style="font-weight: 700;">Meeting Request From {{meeting.student}}</span>
   <div class="spacer"></div>
-  <span class='nav-item'>
-    <button ngbTooltip='Download Proposal'>
-      <mat-icon>reviews</mat-icon>
-    </button>
-  </span>
-  <div class="spacer"></div>
-  <h2 style="margin:auto auto">02/08/2021</h2>
-  <div class="spacer"></div>  
-  <h2 style="margin:auto auto">02:30pm</h2>
+  <h2 style="margin:auto auto">On {{meeting.date}} By  </h2>
+  <h2 style="margin:auto auto">{{ meeting.time}}</h2>
   <div class="spacer"></div>
   <div class="spacer"></div>
-  <button mat-button color='primary'> Accept </button>
-  <button mat-button color='warn'> Reject</button>
+  <button class="btn btn-success"  (click)="acceptMeet(meeting)"> Accept </button>
+  <button class="btn btn-danger" (click)="rejectMeet(meeting)" style="margin-left: 5px;"> Reject</button>
 </div>

@@ -10,50 +10,39 @@ exports.LoginComponent = void 0;
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(route, fb, http, toastr
-    // private serve: SharedService
-    ) {
+    function LoginComponent(route, fb, http, toastr, serve) {
         this.route = route;
         this.fb = fb;
         this.http = http;
         this.toastr = toastr;
+        this.serve = serve;
         this.loading = false;
-        this.apiUrl = 'http://127.0.0.1:8000/user/';
     }
     LoginComponent.prototype.ngOnInit = function () {
         this.loginForm = this.fb.group({
-            RegistrationNo: ['', [forms_1.Validators.required, forms_1.Validators.minLength(16), forms_1.Validators.maxLength(16)]],
-            Password: ['', [forms_1.Validators.required, forms_1.Validators.minLength(8)]]
+            username: ['', [forms_1.Validators.required, forms_1.Validators.minLength(16), forms_1.Validators.maxLength(16)]],
+            password: ['', [forms_1.Validators.required, forms_1.Validators.minLength(8)]]
         });
-        // this.auth();
     };
     LoginComponent.prototype.login = function () {
-        this.loading = true;
-        var body = this.loginForm.value;
-        // // console.log(body, this.users);
-        // this.users.forEach((user: { RegistrationNo: any; Password: any; }) => {
-        //   if (user?.RegistrationNo === body.get('RegistrationNo')?.value && user?.Password === body.get('Password')?.value) {
-        //     this.loading = false;
-        //     this.toastr.success('Logged In Successfully', 'Success', {timeOut: 3000});
-        //     this.route.navigate(['']);
-        //   } else if (user?.RegistrationNo !== body.get('RegistrationNo')?.value && user?.Password !== body.get('Password')?.value) {
-        //     this.loading = false;
-        //     this.toastr.error('Invalid Credentials', 'Error', {timeOut: 3000});
-        //   }
-        // });
-        return this.http.post('http://127.0.0.1:8000/rest-auth', body).subscribe(function (data) {
-            console.log(data);
-        });
-    };
-    LoginComponent.prototype.auth = function () {
         var _this = this;
-        this.http.get(this.apiUrl).subscribe({
+        this.loading = true;
+        return this.serve.login(this.loginForm).subscribe({
             next: function (data) {
-                _this.users = data;
-                console.log(_this.users);
+                _this.loading = false;
+                _this.serve.isLoggedIn = true;
+                _this.serve.currentUser = data;
+                _this.toastr.success("Logged In Successfully", 'Success', { timeOut: 5000 });
+                if (data.username.match(/^CST/i)) {
+                    _this.route.navigate(['/']);
+                }
+                else {
+                    _this.route.navigate(['/supervisor']);
+                }
             },
             error: function (error) {
-                console.log(error);
+                _this.loading = false;
+                _this.toastr.error("Check Your Credentials, That's All We Know", 'Error', { timeOut: 5000 });
             }
         });
     };

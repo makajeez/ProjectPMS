@@ -4,14 +4,14 @@
   <hr>
 </div>
 <div class="card mat-elevation-z20" style="min-height: 300px !important;">
-  <form [formGroup]='ProjectChapterForm' (ngSubmit)="publish()">
+  <form enctype="multipart/form-data" [formGroup]='ProjectChapterForm' (ngSubmit)="publish()">
       <div class="center">
         <table>
           <tr>
             <td>
               <mat-form-field [draggable]='true' appearance='outline' style="color: red !important;">
                 <mat-label>Select Supervisor</mat-label>
-                <mat-select formControlName='Supervisor'>
+                <mat-select formControlName='supervisor'>
                   <mat-option *ngFor="let supervisor of supervisors" [value]='supervisor'>
                     {{ supervisor }}
                   </mat-option>
@@ -21,8 +21,8 @@
             <td>
               <mat-form-field [draggable]='true' appearance='outline' style="color: red !important;">
                 <mat-label>Choose Chapter Number</mat-label>
-                <mat-select formControlName='ChapterNumber'>
-                  <mat-option *ngFor="let chapter of chapters" [value]='chapter'>
+                <mat-select formControlName='chapter_number'>
+                  <mat-option *ngFor="let chapter of chapters;index as i" [value]='chapter'>
                     {{ chapter }}
                   </mat-option>
                 </mat-select>
@@ -32,10 +32,11 @@
         </table>
       </div>
 
-      <input type="file" (change)="readUrl($event)" formControlName='ChapterFile' class="full-width">
+      <!-- <input type="file" (change)="readUrl($event)" formControlName='chapter_file' class="full-width"> -->
+      <input type="file" (change)="onFileSelect($event)" formControlName='chapter_file' class="full-width">
       <img [src]="src" [alt]="src" width="50" height="50" *ngIf="src">
       <br>
-      <button class="button" mat-button [disabled]="this.ProjectChapterForm.invalid"><mat-spinner *ngIf='loading' [diameter]='30'></mat-spinner><span *ngIf="!loading"><mat-icon>upload_file</mat-icon> Upload Chapter</span></button>
+      <button class="button" mat-button><mat-spinner *ngIf='loading' [diameter]='30'></mat-spinner><span *ngIf="!loading"><mat-icon>upload_file</mat-icon> Upload Chapter</span></button>
   </form>
 </div>
 <br>

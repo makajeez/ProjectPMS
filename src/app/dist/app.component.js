@@ -9,13 +9,19 @@ exports.__esModule = true;
 exports.AppComponent = void 0;
 var core_1 = require("@angular/core");
 var AppComponent = /** @class */ (function () {
-    function AppComponent(router) {
+    // @Input() currentUser: any;
+    function AppComponent(router, serve) {
         this.router = router;
+        this.serve = serve;
         this.title = 'Project_Monitoring_System';
         this.isMenuCollapsed = true;
+        this.isLoggedIn = this.serve.isLoggedIn;
     }
     AppComponent.prototype.ngOnInit = function () {
-        // this.router.navigate(['/signup']);
+        // this.router.navigate(['/login']);
+    };
+    AppComponent.prototype.logout = function () {
+        this.serve.logout();
     };
     AppComponent = __decorate([
         core_1.Component({

@@ -3,31 +3,37 @@
   <hr>
 </div>
 <div class="card mat-elevation-z20" style="min-height: 300px !important;">
-  <form [formGroup]='proposalForm' method="POST">
+  <form enctype="multipart/form-data" [formGroup]='proposalForm' (ngSubmit)='submit()'>
     <div class="center">
       <mat-form-field appearance='outline'>
-        <mat-label>Choose Lecturer</mat-label>
-        <mat-select formControlName='Lecturer'>
-          <mat-option *ngFor="let lecturer of lecturers" [value]='lecturer'>
-            {{ lecturer }}
+        <mat-label>Choose supervisor</mat-label>
+        <mat-select formControlName='supervisor'>
+          <mat-option *ngFor="let supervisor of supervisors" [value]='supervisor.username'>
+            {{ supervisor.username }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="this.proposalForm.get('Lecturer')?.hasError('required')">Required Field must be selected</mat-error>
+        <!-- <mat-error *ngIf="this.proposalForm.get('lecturer')?.hasError('required')">Required Field must be selected</mat-error> -->
       </mat-form-field>
     </div>
 
     <mat-form-field [draggable]='true' appearance='legacy' class="full-width">
-      <mat-label>Project Topic Name</mat-label>
-      <input matInput formControlName='Topic' placeholder="Design and Implementation">
+      <mat-label>Proposal Topic Name</mat-label>
+      <input matInput formControlName='proposal_title' placeholder="Design and Implementation">
       <mat-icon matSuffix>edit</mat-icon>
     </mat-form-field><br>
 
     <div>
-      <input type="file" (change)="readUrl($event)" formControlName='Abstract' class="full-width">
+      <input type="file" (change)="readUrl($event)" formControlName='proposal_file' class="full-width">
+      <!-- <textarea formControlName=''  cols="50" rows="30" >Enter Brief Abstract</textarea> -->
       <img [src]="src" [alt]="src" width="50" height="50" *ngIf="src">
     </div>
     <br>
-    <button class="button" mat-button [disabled]="this.proposalForm.invalid"><mat-icon>file_upload</mat-icon> Upload Topic</button>
+    <button class="button" mat-button [disabled]="this.proposalForm.invalid">
+      <mat-spinner *ngIf='loading' [diameter]='29'></mat-spinner>
+      <span *ngIf='!loading'>
+        <mat-icon>file_upload</mat-icon> Upload Topic
+      </span>
+    </button>
   </form>
 </div>
 <br>

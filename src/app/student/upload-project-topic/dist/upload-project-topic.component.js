@@ -10,36 +10,72 @@ exports.UploadProjectTopicComponent = void 0;
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var UploadProjectTopicComponent = /** @class */ (function () {
-    function UploadProjectTopicComponent(fb) {
+    function UploadProjectTopicComponent(fb, http, toastr, serve, route) {
         this.fb = fb;
+        this.http = http;
+        this.toastr = toastr;
+        this.serve = serve;
+        this.route = route;
         this.src = '';
-        this.lecturers = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', "Mal. S M Tanimu"];
+        this.loading = false;
+        this.supervisors = [
+            {
+                username: 'Dr. Faruk Umar Ambursa',
+                id: 1
+            },
+            {
+                username: 'Dr.Khalid',
+                id: 2
+            },
+            {
+                username: 'Mal. S M Tanimu',
+                id: 3
+            }
+        ];
     }
     UploadProjectTopicComponent.prototype.ngOnInit = function () {
         this.proposalForm = this.fb.group({
-            Lecturer: ['', forms_1.Validators.required],
-            Topic: ['', forms_1.Validators.required],
-            Abstract: '',
-            Status: 'pending'
+            supervisor: ['', forms_1.Validators.required],
+            proposal_title: ['', forms_1.Validators.required],
+            proposal_file: '',
+            student: this.serve.currentUser.username,
+            status: 'Pending'
         });
     };
-    //   readUrl(event: any): void {
-    //     if (event.target.files && event.target.files[0]) {
-    //       const reader = new FileReader();
-    //       reader.onload = (event: ProgressEvent) => {
-    //         this.url = (<FileReader>event.target).result;
-    //       }
-    //       reader.readAsDataURL(event.target.files[0]);
-    //     }
-    //   }
+    UploadProjectTopicComponent.prototype.submit = function () {
+        var _this = this;
+        var _a, _b, _c, _d, _e;
+        this.loading = true;
+        var formData = new FormData();
+        formData.append('proposal_title', (_a = this.proposalForm.get('proposal_title')) === null || _a === void 0 ? void 0 : _a.value);
+        formData.append('proposal_file', (_b = this.proposalForm.get('proposal_file')) === null || _b === void 0 ? void 0 : _b.value);
+        formData.append('supervisor', (_c = this.proposalForm.get('supervisor')) === null || _c === void 0 ? void 0 : _c.value);
+        formData.append('student', (_d = this.proposalForm.get('student')) === null || _d === void 0 ? void 0 : _d.value);
+        formData.append('status', (_e = this.proposalForm.get('status')) === null || _e === void 0 ? void 0 : _e.value);
+        return this.http.post(this.serve.api + "/proposal/", formData).subscribe({
+            next: function (data) {
+                _this.loading = false;
+                _this.toastr.success("Proposal Uploaded Successfully", 'Success', { timeOut: 2000 });
+                _this.route.navigate(['/']);
+            },
+            error: function (error) {
+                _this.loading = false;
+                _this.toastr.error("Proposal Upload Failed \n\n        That's All we know", 'Error', { timeOut: 2000 });
+            }
+        });
+    };
     UploadProjectTopicComponent.prototype.readUrl = function (event) {
-        var _a;
-        var file = (_a = this.proposalForm.get('Abstract')) === null || _a === void 0 ? void 0 : _a.value.split('.');
+        var _a, _b;
+        var file = (_a = this.proposalForm.get('proposal_file')) === null || _a === void 0 ? void 0 : _a.value.split('.');
         if (file[file.length - 1] === 'pdf') {
             this.src = 'assets/fileIcon/pdf.jpeg';
         }
         else if (file[file.length - 1] === 'doc' || 'docx') {
             this.src = 'assets/fileIcon/doc.jpeg';
+        }
+        if (event.target.files.length > 0) {
+            var file_1 = event.target.files[0];
+            (_b = this.proposalForm.get('proposal_file')) === null || _b === void 0 ? void 0 : _b.setValue(file_1);
         }
     };
     UploadProjectTopicComponent = __decorate([

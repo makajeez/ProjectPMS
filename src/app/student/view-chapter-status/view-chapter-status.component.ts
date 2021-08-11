@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-view-chapter-status',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewChapterStatusComponent implements OnInit {
 
-  constructor() { }
+  constructor(private serve: AppService) { }
 
   ngOnInit(): void {
   }

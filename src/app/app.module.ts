@@ -20,6 +20,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { MatNativeDateModule } from '@angular/material/core';
 import { E404Component } from './e404/e404.component';
+import { AppService } from './app.service';
 
 
 @NgModule({
@@ -52,7 +53,7 @@ import { E404Component } from './e404/e404.component';
     HttpClientModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

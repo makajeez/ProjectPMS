@@ -10,17 +10,38 @@ exports.MakeAppointmentComponent = void 0;
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var MakeAppointmentComponent = /** @class */ (function () {
-    function MakeAppointmentComponent(fb) {
+    function MakeAppointmentComponent(fb, http, toastr, serve, route) {
         this.fb = fb;
+        this.http = http;
+        this.toastr = toastr;
+        this.serve = serve;
+        this.route = route;
         this.students = ['Buhari Ahmed Alhassan', 'Khadija Mahmoud Falgore', 'Mubarak Daha Isa', 'Azeez Miudeen Owolabi'];
-        this.appointmentForm = this.fb.group({
-            Student: ['', forms_1.Validators.required],
-            Date: ['', [forms_1.Validators.required, forms_1.Validators.minLength(8), forms_1.Validators.maxLength(10)]],
-            Time: ['', [forms_1.Validators.required, forms_1.Validators.minLength(5), forms_1.Validators.maxLength(5)]],
-            Venue: ['', forms_1.Validators.required]
-        });
+        this.loading = false;
     }
     MakeAppointmentComponent.prototype.ngOnInit = function () {
+        this.appointmentForm = this.fb.group({
+            student: ['', forms_1.Validators.required],
+            date: ['', [forms_1.Validators.required, forms_1.Validators.minLength(8), forms_1.Validators.maxLength(10)]],
+            time: ['', [forms_1.Validators.required, forms_1.Validators.minLength(5), forms_1.Validators.maxLength(5)]],
+            venue: ['', forms_1.Validators.required],
+            supervisor: this.serve.currentUser.username
+        });
+    };
+    MakeAppointmentComponent.prototype.sendInvite = function () {
+        var _this = this;
+        this.loading = true;
+        return this.http.post('http://127.0.0.1:8000/invite/', JSON.stringify(this.appointmentForm.value)).subscribe({
+            next: function (data) {
+                _this.loading = false;
+                _this.toastr.success('Invitation Sent', 'Success', { timeOut: 3000 });
+                _this.route.navigate(['/supervisor']);
+            },
+            error: function (error) {
+                _this.loading = false;
+                _this.toastr.error('An error occured, try again later', 'Error', { timeOut: 3000 });
+            }
+        });
     };
     MakeAppointmentComponent = __decorate([
         core_1.Component({

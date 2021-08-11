@@ -6,29 +6,29 @@
   <form  [formGroup]='reqForm' (ngSubmit)='save()'>
     <div class="center">
       <mat-form-field appearance='outline'>
-        <mat-label>Select Your Lecturer</mat-label>
-        <mat-select formControlName='Lecturer'>
-          <mat-option *ngFor="let lecturer of lecturers" [value]='lecturer'>
-            {{ lecturer }}
+        <mat-label>Select Your supervisor</mat-label>
+        <mat-select formControlName='supervisor'>
+          <mat-option *ngFor="let supervisor of supervisors" [value]='supervisor'>
+            {{ supervisor }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="this.reqForm.get('Lecturer')?.hasError('required')">Required field cannot be blank</mat-error> 
+        <mat-error *ngIf="this.reqForm.get('supervisor')?.hasError('required')">Required field cannot be blank</mat-error> 
       </mat-form-field>
     </div>
     <mat-form-field [draggable]='true' appearance='outline' class="full-width">
       <mat-label>Choose a Date</mat-label>
-      <input matInput formControlName='Date' placeholder="(dd/mm/yyyy)">
+      <input matInput formControlName='date' placeholder="(dd/mm/yyyy)">
       <mat-icon matSuffix>event</mat-icon>
-      <mat-error *ngIf="this.reqForm.get('Date')?.hasError('required')">Required field cannot be blank</mat-error> 
-      <mat-error *ngIf="this.reqForm.get('Date')?.hasError('minlength')">Character length cannot be less than 8, seperate with '/ or -'</mat-error> 
-      <mat-error *ngIf="this.reqForm.get('Date')?.hasError( 'maxlength')">Character length must not exceed 10, seperate with '/ or -'</mat-error>
+      <mat-error *ngIf="this.reqForm.get('date')?.hasError('required')">Required field cannot be blank</mat-error> 
+      <mat-error *ngIf="this.reqForm.get('date')?.hasError('minlength')">Character length cannot be less than 8, seperate with '/ or -'</mat-error> 
+      <mat-error *ngIf="this.reqForm.get('date')?.hasError( 'maxlength')">Character length must not exceed 10, seperate with '/ or -'</mat-error>
     </mat-form-field>
     <mat-form-field [draggable]='true' appearance='outline' class="full-width">
       <mat-label>Pick a Time</mat-label>
-      <input matInput formControlName='Time'>
+      <input matInput formControlName='time'>
       <mat-icon matSuffix>schedule</mat-icon>
-      <mat-error *ngIf="this.reqForm.get('Time')?.hasError('required')">Required filed cannot be blank</mat-error> 
-      <mat-error *ngIf="this.reqForm.get('Time')?.hasError('minlength') || this.reqForm.get('Time')?.hasError( 'maxlength')">Character length must be exactly 5, seperate with ': or -'</mat-error>
+      <mat-error *ngIf="this.reqForm.get('time')?.hasError('required')">Required filed cannot be blank</mat-error> 
+      <mat-error *ngIf="this.reqForm.get('time')?.hasError('minlength') || this.reqForm.get('time')?.hasError( 'maxlength')">Character length must be exactly 5, seperate with ': or -'</mat-error>
     </mat-form-field>
     <button class="button" mat-button [disabled]="this.reqForm.invalid">
       <mat-spinner *ngIf='loading' [diameter]='30'></mat-spinner>

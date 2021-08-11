@@ -11,42 +11,40 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 // declare let toastr: any;
 var SignupComponent = /** @class */ (function () {
-    function SignupComponent(fb, http, route, toastr) {
+    function SignupComponent(fb, http, route, toastr, serve) {
         this.fb = fb;
         this.http = http;
         this.route = route;
         this.toastr = toastr;
-        this.ApiUrl = 'http://127.0.0.1:8000/rest-auth/registration/';
+        this.serve = serve;
         this.loading = false;
         this.hide = true;
     }
     SignupComponent.prototype.ngOnInit = function () {
         this.signupForm = this.fb.group({
-            // entity: '' ,
-            FirstName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            LastName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
-            Email: ['', [forms_1.Validators.required, forms_1.Validators.email]],
-            Phone: [null, [forms_1.Validators.required, forms_1.Validators.minLength(11), forms_1.Validators.maxLength(11)]],
-            RegistrationNo: ['', [forms_1.Validators.required, forms_1.Validators.minLength(16), forms_1.Validators.maxLength(16)]],
-            Photo: 'default.jpg',
-            Password: ['', [forms_1.Validators.required, forms_1.Validators.minLength(8)]]
+            first_name: ['', forms_1.Validators.required],
+            last_name: ['', forms_1.Validators.required],
+            email: ['', [forms_1.Validators.required, forms_1.Validators.email]],
+            username: ['', [forms_1.Validators.required, forms_1.Validators.minLength(16), forms_1.Validators.maxLength(16)]],
+            password1: ['', [forms_1.Validators.required, forms_1.Validators.minLength(8)]],
+            password2: ['', [forms_1.Validators.required, forms_1.Validators.minLength(8)]]
         });
     };
     SignupComponent.prototype.signUp = function () {
         var _this = this;
         this.loading = true;
         var body = this.signupForm;
-        return this.http.post(this.ApiUrl, JSON.stringify(body.value)).subscribe({
+        return this.serve.signUp(body).subscribe({
             next: function (data) {
                 var _a;
                 _this.loading = false;
-                _this.toastr.success("User " + ((_a = body.get('RegistrationNo')) === null || _a === void 0 ? void 0 : _a.value) + " Registered Successfully", 'Success', { timeOut: 5000 });
-                _this.route.navigate(['login']);
+                _this.toastr.success("User " + ((_a = body.get('username')) === null || _a === void 0 ? void 0 : _a.value) + " Registered Successfully", 'Success', { timeOut: 5000 });
+                _this.route.navigate(['/login']);
             },
             error: function (error) {
                 var _a;
                 _this.loading = false;
-                _this.toastr.error("User " + ((_a = body.get('RegistrationNo')) === null || _a === void 0 ? void 0 : _a.value) + " Not Registered", 'Error', { timeOut: 5000 });
+                _this.toastr.error("User " + ((_a = body.get('username')) === null || _a === void 0 ? void 0 : _a.value) + " Not Registered", 'Error', { timeOut: 5000 });
             }
         });
     };

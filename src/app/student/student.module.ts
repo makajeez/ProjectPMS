@@ -7,7 +7,6 @@ import { RequestAppointmentComponent } from './request-appointment/request-appoi
 import { ViewChapterStatusComponent } from './view-chapter-status/view-chapter-status.component';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { HomeComponent } from '../home/home.component';
 
 
@@ -18,8 +17,7 @@ import { HomeComponent } from '../home/home.component';
     UploadProjectTopicComponent,
     UploadChaptersComponent,
     RequestAppointmentComponent,
-    ViewChapterStatusComponent,
-    UpdateProfileComponent
+    ViewChapterStatusComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +25,6 @@ import { HomeComponent } from '../home/home.component';
     MaterialModule,
     RouterModule.forChild([
       {path: 'upload_project', component: UploadProjectTopicComponent},
-      {path: 'update_profile', component: UpdateProfileComponent},
       {path: 'upload_chapter', component: UploadChaptersComponent},
       {path: 'request_appointment', component: RequestAppointmentComponent},
       {path: 'view_status', component: ViewChapterStatusComponent},

@@ -90,4 +90,10 @@ input[type='file'] {
   height: 30px;
   margin: 0 auto;
 }
-
+hr {
+  color: white!important;
+}
+#black {
+  color: black !important;
+  
+}

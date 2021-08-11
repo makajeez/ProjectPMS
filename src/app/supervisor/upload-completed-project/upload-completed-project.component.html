@@ -4,28 +4,40 @@
     <hr color="#1976d2">
   </div>
   <div class="mat-elevation-z20 card">
-    <form method="POST" [formGroup]='projectForm' class="mt-50">
+    <form method="POST" [formGroup]='projectForm' class="mt-50" (ngSubmit)='submit()'>
       <mat-form-field [draggable]='true' appearance='outline' class="full-width">
         <mat-label>Project Title</mat-label>
-        <input matInput placeholder='Design and Implementation of GPS tracking System' formControlName='ProjectTitle'>
+        <input matInput placeholder='Design and Implementation of GPS tracking System' formControlName='project_title'>
       </mat-form-field>
       <mat-form-field [draggable]='true' appearance='outline' class="full-width">
         <mat-label>Authored By</mat-label>
-        <input matInput placeholder='Usman Shehu Gezawa' formControlName='Author'>
+        <input matInput placeholder='Usman Shehu Gezawa' formControlName='student'>
       </mat-form-field>
-      <mat-form-field [draggable]='true' appearance='outline'>
+      <mat-form-field [draggable]='true' appearance='outline' class="full-width">
+        <mat-label>Pick Year</mat-label>
+        <mat-select formControlName='year'>
+          <mat-option *ngFor="let year of years" [value]='year'>
+            {{ year }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field [draggable]='true' appearance='outline' class="full-width">
         <mat-label>Supervisor</mat-label>
-        <mat-select formControlName='Supervisor'>
+        <mat-select formControlName='supervisor'>
           <mat-option *ngFor="let supervisor of supervisors" [value]='supervisor'>
             {{ supervisor }}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <div class="center">
-        <input type="file" formControlName="File" class="mb-30">
+        <input type="file" (change)='readUrl($event)' formControlName="project_file" class="mb-30">
+        <img [src]="src" [alt]="src" width="50" height="50" *ngIf="src">
       </div>
       <br>
-      <button mat-button class="button" [disabled]='this.projectForm.invalid' >Upload</button>
+      <button mat-button class="button" >
+        <mat-spinner *ngIf='loading' [diameter]='29'></mat-spinner>
+        <span *ngIf='!loading'>Upload</span>
+      </button>
     </form>
   </div>
 </div>

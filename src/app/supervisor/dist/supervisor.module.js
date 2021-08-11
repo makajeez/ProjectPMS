@@ -18,6 +18,7 @@ var material_module_1 = require("../material/material.module");
 var review_submissions_component_1 = require("./review-submissions/review-submissions.component");
 var student_list_component_1 = require("./student-list/student-list.component");
 var upload_completed_project_component_1 = require("./upload-completed-project/upload-completed-project.component");
+// import { ReviewAppointmentsComponent } from './review-appointments/review-appointments.component';
 var SupervisorModule = /** @class */ (function () {
     function SupervisorModule() {
     }

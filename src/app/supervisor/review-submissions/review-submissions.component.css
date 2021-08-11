@@ -1,6 +1,6 @@
-button {
-  background-color: transparent;
-  outline: none;
+/* button {
+  background-color: transparent ;
+  outline: none !important;
   border-color: transparent;
   transition: all 1s ease;
-}
+} */

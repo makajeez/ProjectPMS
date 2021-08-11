@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-request-appointment',
@@ -9,21 +12,31 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 export class RequestAppointmentComponent implements OnInit {
   reqForm!: FormGroup;
   loading = false;
-  lecturers = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', 'Mal. S M Tanimu'];
+  supervisors = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', 'Mal. S M Tanimu'];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private route: Router, private toastr: ToastrService, private fb: FormBuilder, private serve: AppService) {
   }
 
   ngOnInit(): void {
     this.reqForm = this.fb.group({
-      Lecturer: ['', Validators.required],
-      Date: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
-      Time: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
-      Status: 'pending'
+      date: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
+      time: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+      student: this.serve.currentUser.username,
+      supervisor: ['', Validators.required],
+      status: 'Pending'
     });
   }
   save(): any {
-    console.log(this.reqForm);
-    return false;
+    this.serve.requestAppointment(this.reqForm).subscribe({
+      next: (data: any) => {
+        this.toastr.success(`Meeting Request Sent`, '', {timeOut: 3000});
+        this.route.navigate(['/']);
+      },
+      error: (error: any) => {
+        // this.toastr.error(`Upload Not Made`, 'Error', {timeOut: 3000});
+        this.toastr.success(`There Was An Error While Processing Request`, '', {timeOut: 3000});
+        // this.route.navigate(['/']);
+      }
+    });
   }
 }

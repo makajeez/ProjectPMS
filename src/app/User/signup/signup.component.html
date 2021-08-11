@@ -1,60 +1,72 @@
 <div class="card mat-elevation-z20"style="margin-top: 30px;">
   <div class="container">
     <h1>Signup </h1>
-    <h3 style="text-align: center; padding-left: 15px; color: rgb(104, 102, 100);">Create an account, lets get your details</h3>
-    <hr color="#1976d2">
+    <h3 style="text-align: center;">Create an account, lets get your details</h3>
+    <div class="container">
+      <div class="container">
+        <hr id="black">
+      </div>
+    </div>
   </div>
   <form method="POST" class="mt-50" [formGroup]='signupForm' (ngSubmit)='signUp()'>
-    <table class="full-width">
+     <table class="full-width">
       <tr>
         <td>
           <mat-form-field appearance='legacy' class="full-width">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="Buhari" formControlName='FirstName'>
+            <input matInput placeholder="Buhari" formControlName='first_name'>
             <mat-icon matSuffix>person</mat-icon>
           </mat-form-field>
         </td>
         <td>
           <mat-form-field appearance='legacy' class="full-width">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Doe" formControlName='LastName'>
+            <input matInput placeholder="Doe" formControlName='last_name'>
             <mat-icon matSuffix>person</mat-icon>
           </mat-form-field>
         </td>
       </tr>
     </table>
-
     <mat-form-field appearance='legacy' class="full-width">
       <mat-label>Email</mat-label>
-      <input matInput placeholder="buhari.alhassan0@gmail.com" formControlName='Email'>
+      <input matInput placeholder="buhari.alhassan0@gmail.com" formControlName='email'>
       <mat-icon matSuffix>mail</mat-icon>
-      <mat-error *ngIf="this.signupForm.get('Email')?.hasError('email')">Enter a valid mail address</mat-error>
+      <mat-error *ngIf="this.signupForm.get('email')?.hasError('email')">Enter a valid mail address</mat-error>
     </mat-form-field>
-    <mat-form-field appearance='legacy' class="full-width">
+    <!--<mat-form-field appearance='legacy' class="full-width">
       <mat-label>Phone Number</mat-label>
       <span matPrefix align='start'>+234 &nbsp;</span>
-      <input type='tel' matInput placeholder="08145044481" formControlName='Phone'>
+      <input type='tel' matInput placeholder="08145044481" formControlName='phone'>
       <mat-icon matSuffix>phone</mat-icon>
-      <mat-error *ngIf="this.signupForm.get('Phone')?.hasError('minlength')">Phone number less than 11 digits</mat-error>
-      <mat-error *ngIf="this.signupForm.get('Phone')?.hasError('maxlength')">Phone number greater than 11 digits</mat-error>
-    </mat-form-field>
+      <mat-error *ngIf="this.signupForm.get('phone')?.hasError('minlength')">Phone number less than 10 digits</mat-error>
+      <mat-error *ngIf="this.signupForm.get('phone')?.hasError('maxlength')">Phone number greater than 10 digits</mat-error>
+    </mat-form-field> -->
     <mat-form-field appearance='legacy' class="full-width">
       <mat-label>Registration Number</mat-label>
-      <input matInput placeholder="CST/16/C0M/00543" formControlName='RegistrationNo'>
+      <input matInput placeholder="CST-16-C0M-00543" formControlName='username'>
       <mat-icon matSuffix>edit</mat-icon>
-      <mat-error *ngIf="this.signupForm.get('RegistrationNo')?.hasError('minlength') || this.signupForm.get('RegistrationNo')?.hasError('maxlength')">must be exactly 16 characters</mat-error>
-      <mat-hint>{{this.signupForm.get('RegistrationNo')?.value.length || 0}}/16</mat-hint>
+      <mat-error *ngIf="this.signupForm.get('username')?.hasError('minlength') || this.signupForm.get('username')?.hasError('maxlength')">must be exactly 16 characters</mat-error>
+      <mat-hint>{{this.signupForm.get('username')?.value.length || 0}}/16</mat-hint>
     </mat-form-field>
     <mat-form-field appearance='legacy' class="full-width">
       <mat-label>Password</mat-label>
-      <input matInput [type]="hide? 'password': 'text'" placeholder="hhh! Enter Something Super Secret" formControlName='Password'>
+      <input matInput [type]="hide? 'password': 'text'" placeholder="hhh! Enter Something Super Secret" formControlName='password1'>
       <mat-icon matSuffix (click)="hide = !hide">{{ hide?'visibility':'visibility_off'}} </mat-icon>
-      <mat-error *ngIf="this.signupForm.get('Password')?.hasError('minlength')">must be at least 8 characters long</mat-error>
+      <mat-error *ngIf="this.signupForm.get('password1')?.hasError('minlength')">must be at least 8 characters long</mat-error>
     </mat-form-field>
     <br>
-    <!-- <input type="file" [value]="this.signupForm.get('Photo')?.value" formControlName='Photo' [hidden]='true'> -->
+    <mat-form-field appearance='legacy' class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide? 'password': 'text'" placeholder="hhh! Enter Something Super Secret" formControlName='password2'>
+      <mat-icon matSuffix (click)="hide = !hide">{{ hide?'visibility':'visibility_off'}} </mat-icon>
+      <mat-error *ngIf="this.signupForm.get('password2')?.hasError('minlength')">must be at least 8 characters long</mat-error>
+    </mat-form-field>
+
     <br>
-    <button mat-button class="button" [disabled]="this.signupForm.invalid"><mat-spinner *ngIf='loading' [diameter]='29'></mat-spinner><span *ngIf='!loading'>Sign Up</span></button>
+    <button mat-button class="button" >
+      <mat-spinner *ngIf='loading' [diameter]='29'></mat-spinner>
+      <span *ngIf='!loading'>Sign Up</span>
+    </button>
     <h4 style="text-align: center;">Already have an account?  <a [routerLink]="['/login']">Login</a></h4>
   </form>
 </div>

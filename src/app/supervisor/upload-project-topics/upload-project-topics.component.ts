@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-upload-project-topics',
@@ -8,19 +11,36 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UploadProjectTopicsComponent implements OnInit {
   uploadTopicForm!: FormGroup;
+  loading = false;
   date: Date = new Date();
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private toastr: ToastrService,
+    private route: Router
+    ) { }
 
   ngOnInit(): void {
     this.uploadTopicForm = this.fb.group({
-      Title: ['', Validators.required],
-      SubmittedBy: ['', Validators.required],
-      Date: `${this.date.getDate()}/${this.date.getMonth() + 1}/${this.date.getFullYear()}`
+      title: ['', Validators.required],
+      supervisor: ['', Validators.required]
     });
   }
-  logData(): void {
-    console.log(this.uploadTopicForm.value);
+
+  logData(): any{
+    this.loading = true;
+    return this.http.post('http://127.0.0.1:8000/upload_topic/', JSON.stringify(this.uploadTopicForm.value)).subscribe({
+      next: (data: any) => {
+        this.loading = false;
+        this.toastr.success('Successfully Uploaded', 'Success', {timeOut: 3000});
+        this.route.navigate(['/supervisor']);
+      },
+      error: (error: any) => {
+        this.loading = false;
+        this.toastr.error('An error occured, try again later', 'Error', {timeOut: 3000});
+      }
+    });
   }
 
 }

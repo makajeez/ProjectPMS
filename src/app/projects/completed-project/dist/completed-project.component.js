@@ -9,47 +9,56 @@ exports.__esModule = true;
 exports.CompletedProjectComponent = void 0;
 var core_1 = require("@angular/core");
 var CompletedProjectComponent = /** @class */ (function () {
-    function CompletedProjectComponent() {
-        this.tHeads = [];
-        this.projects = [
+    function CompletedProjectComponent(http) {
+        this.http = http;
+        this.project = [
             {
                 author: 'Usman Shehu Gezawa',
                 topic: 'Design and implementation of an Image Recognition System',
-                supervisor: 'Saminu Muhammad',
+                supervisor: 'Malam Saminu Muhammad',
                 fileUrl: 'failFast.pdf',
                 uploadDate: '9/23/2013'
             },
             {
-                author: 'Usman Shehu Gezawa',
+                author: 'Mubarak Daha Isa',
+                topic: ' Desgin and Implementation of an Image Recognition System',
+                supervisor: 'Malam Abba Datti',
+                fileUrl: 'failFast.pdf',
+                uploadDate: '9/23/2013'
+            },
+            {
+                author: 'Ibrahim Abdullahi Aliyu',
                 topic: 'Image Recognition System',
-                supervisor: 'Saminu Muhammad',
+                supervisor: 'Malam Sagir Tanimu',
                 fileUrl: 'failFast.pdf',
                 uploadDate: '9/23/2013'
             },
             {
-                author: 'Usman Shehu Gezawa',
-                topic: 'Image Recognition System',
-                supervisor: 'Saminu Muhammad',
+                author: 'Usman Tugga',
+                topic: 'Online shopping pllatform',
+                supervisor: 'Dr. F U Ambursa',
                 fileUrl: 'failFast.pdf',
                 uploadDate: '9/23/2013'
             },
             {
-                author: 'Usman Shehu Gezawa',
-                topic: 'Image Recognition System',
-                supervisor: 'Saminu Muhammad',
-                fileUrl: 'failFast.pdf',
-                uploadDate: '9/23/2013'
-            },
-            {
-                author: 'Usman Shehu Gezawa',
+                author: 'Buhari Ahmed Alhassan',
                 topic: 'Image Recognition System',
                 supervisor: 'Saminu Muhammad',
                 fileUrl: 'failFast.pdf',
                 uploadDate: '9/23/2013'
             },
         ];
+        this.url = 'http://127.0.0.1:8000';
     }
     CompletedProjectComponent.prototype.ngOnInit = function () {
+        this.getProject();
+    };
+    CompletedProjectComponent.prototype.getProject = function () {
+        var _this = this;
+        return this.http.get(this.url + "/project/").subscribe(function (data) {
+            _this.projects = data;
+            console.log(data);
+        });
     };
     CompletedProjectComponent = __decorate([
         core_1.Component({

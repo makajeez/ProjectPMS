@@ -9,19 +9,17 @@ exports.__esModule = true;
 exports.StudentListComponent = void 0;
 var core_1 = require("@angular/core");
 var StudentListComponent = /** @class */ (function () {
-    function StudentListComponent(http) {
+    function StudentListComponent(http, serve) {
         this.http = http;
-        this.students = [];
+        this.serve = serve;
     }
     StudentListComponent.prototype.ngOnInit = function () {
         this.getUsers();
     };
     StudentListComponent.prototype.getUsers = function () {
         var _this = this;
-        return this.http.get('http://127.0.0.1:8000/user/').subscribe(function (data) {
-            var _a;
-            (_a = _this.students).push.apply(_a, data);
-            console.log(data);
+        this.serve.getUsers().subscribe(function (data) {
+            _this.students = data;
         });
     };
     StudentListComponent = __decorate([

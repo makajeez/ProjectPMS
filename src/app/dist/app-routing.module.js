@@ -18,7 +18,7 @@ var signup_component_1 = require("./User/signup/signup.component");
 var routes = [
     { path: '', component: home_component_1.HomeComponent },
     { path: 'login', component: login_component_1.LoginComponent },
-    { path: 'user', component: signup_component_1.SignupComponent },
+    { path: 'signup', component: signup_component_1.SignupComponent },
     { path: 'project_topics', component: project_topics_component_1.ProjectTopicsComponent },
     { path: 'completed_project', component: completed_project_component_1.CompletedProjectComponent },
     { path: 'student', loadChildren: './student/student.module#StudentModule' },
