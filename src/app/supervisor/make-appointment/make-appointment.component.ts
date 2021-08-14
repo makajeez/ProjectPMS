@@ -11,7 +11,8 @@ import { AppService } from 'src/app/app.service';
   styleUrls: ['./make-appointment.component.css']
 })
 export class MakeAppointmentComponent implements OnInit {
-  students = ['Buhari Ahmed Alhassan', 'Khadija Mahmoud Falgore', 'Mubarak Daha Isa', 'Azeez Miudeen Owolabi'];
+  // students = ['Buhari Ahmed Alhassan', 'Khadija Mahmoud Falgore', 'Mubarak Daha Isa', 'Azeez Miudeen Owolabi'];
+  students: any;
   loading = false;
   appointmentForm!: FormGroup;
 
@@ -29,10 +30,21 @@ export class MakeAppointmentComponent implements OnInit {
       date: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
       time: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
       venue: ['', Validators.required],
-      supervisor: this.serve.currentUser.username
+      supervisor: this.serve.currentUser.email
+    });
+    this.getStudents();
+  }
+  getStudents(): any{
+    this.http.get('http://127.0.0.1:8000/user/').subscribe({
+      next: (data: any) => {
+        this.students = data.filter((user: any) => user.email === this.serve.currentUser.email);
+        return this.students;
+        },
+      error: (error: any) => {
+        console.log(error);
+      }
     });
   }
-
   sendInvite(): any{
     this.loading = true;
     return this.http.post('http://127.0.0.1:8000/invite/', JSON.stringify(this.appointmentForm.value)).subscribe({

@@ -11,12 +11,10 @@ import { AppService } from './app.service';
 export class AppComponent implements OnInit {
   title = 'Project_Monitoring_System';
   public isMenuCollapsed = true;
-  isLoggedIn = this.serve.isLoggedIn;
-  // @Input() currentUser: any;
 
   constructor(
     public router: Router,
-    private serve: AppService
+    public serve: AppService
     ) {
 
   }
@@ -24,6 +22,7 @@ export class AppComponent implements OnInit {
     // this.router.navigate(['/login']);
   }
   logout(): void{
-    this.serve.logout();
+   this.serve.logout();
+   this.router.navigate(['/login']);
   }
 }

@@ -20,9 +20,9 @@ export class ReviewSubmissionsComponent implements OnInit {
     private serve: AppService) { }
 
   ngOnInit(): void {
+    this.getReq();
     this.getPro();
     this.getChap();
-    this.getReq();
   }
 
   getReq(): any{

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { FormGroup } from '@angular/forms';
 
 
@@ -27,15 +28,25 @@ export class AppService {
     return this.http.post(`${this.api}/api-token-auth/`, JSON.stringify(form.value), option);
   }
   logout(): any{
-    this.currentUser = null;
+    return this.currentUser = undefined;
   }
-
   requestAppointment(formvalue: FormGroup): any{
     return this.http.post(`${this.api}/req_meeting/`, JSON.stringify(formvalue.value));
   }
-
   getUsers(): Observable<object>{
     return this.http.get(`${this.api}/user/`);
+  }
+  getProposals(): Observable<object>{
+    return this.http.get(`${this.api}/proposal/`);
+  }
+  getChapters(): Observable<object>{
+    return this.http.get(`${this.api}/chapter/`);
+  }
+  getAppointmentReq(): Observable<object>{
+    return this.http.get(`${this.api}/req_meeting/`);
+  }
+  getInvites(): Observable<object>{
+    return this.http.get(`${this.api}/invite/`);
   }
 }
 

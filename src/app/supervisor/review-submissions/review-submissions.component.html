@@ -4,6 +4,21 @@
 <hr color="black" style="font-weight: 700;">
 
 <div class="container">
+  <hr color="white">
+  <h2>Meeting Requests</h2>
+  <hr color="white">
+</div>
+<div class="mat-elevation-z20" *ngFor='let meeting of filteredMeeting' style="display: flex; border-radius: 10px; padding: 10px; height: 50px; align-items: center; margin: 20px; background-color: white;">
+  <span style="font-weight: 700;">Meeting Request From {{meeting.student}}</span>
+  <div class="spacer"></div>
+  <span style="font-weight: 700;"> On {{meeting.date}} By {{ meeting.time}}pm </span>
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+  <button class="btn btn-success"  (click)="acceptMeet(meeting)"> Accept </button>
+  <button class="btn btn-danger" (click)="rejectMeet(meeting)" style="margin-left: 5px;"> Reject</button>
+</div>
+
+<div class="container">
   <h2>Proposals</h2>
   <hr color="white">
 </div>
@@ -11,14 +26,15 @@
   <span style="font-weight: 700;">{{proposal.student}}</span>
   <div class="spacer"></div>
   <span style="font-weight: 700;">{{proposal.proposal_title}}</span>
+  <div class="spacer"></div>
+  <div class="spacer"></div>
 
-    <a [href]="url+proposal.proposal_file" [download]="url+proposal.proposal_file" target="_blank">
-      <button class="btn">
-        <mat-icon>download</mat-icon>
-      </button>
-    </a>
-  <div class="spacer"></div>
-  <div class="spacer"></div>
+  <a [href]="url+proposal.proposal_file" [download]="url+proposal.proposal_file" target="_blank">
+    <button class="btn">
+      <mat-icon>download</mat-icon>
+    </button>
+  </a>
+
   <button class="btn btn-success" (click)='acceptProp(proposal)'> Accept </button>
   <button class="btn btn-danger" (click)='rejectProp(proposal)' style="margin-left: 5px;"> Reject</button>
 </div>
@@ -35,6 +51,8 @@
   <div class="spacer"></div>
   <span style="font-weight: 700;">{{ chapter.chapter_number}}</span>
   <div class="spacer"></div>
+  <div class="spacer"></div>
+
   <span class='nav-item'>
     <a [href]="url+chapter.chapter_file" target="_blank">
       <button class="btn">
@@ -42,24 +60,7 @@
       </button>
     </a>
   </span>
-  <div class="spacer"></div>
-  <div class="spacer"></div>
+
   <button class="btn btn-success" (click)="acceptMeet(chapter)"> Accept </button>
   <button class="btn btn-danger" style="margin-left: 5px;" (click)="rejectMeet(chapter)"> Reject</button>
-</div>
-
-<div class="container">
-  <hr color="white">
-  <h2>Meeting Requests</h2>
-  <hr color="white">
-</div>
-<div class="mat-elevation-z20" *ngFor='let meeting of filteredMeeting' style="display: flex; border-radius: 10px; padding: 10px; height: 50px; align-items: center; margin: 20px; background-color: white;">
-  <span style="font-weight: 700;">Meeting Request From {{meeting.student}}</span>
-  <div class="spacer"></div>
-  <h2 style="margin:auto auto">On {{meeting.date}} By  </h2>
-  <h2 style="margin:auto auto">{{ meeting.time}}</h2>
-  <div class="spacer"></div>
-  <div class="spacer"></div>
-  <button class="btn btn-success"  (click)="acceptMeet(meeting)"> Accept </button>
-  <button class="btn btn-danger" (click)="rejectMeet(meeting)" style="margin-left: 5px;"> Reject</button>
 </div>

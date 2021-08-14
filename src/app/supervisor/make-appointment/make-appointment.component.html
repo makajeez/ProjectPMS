@@ -8,8 +8,8 @@
           <mat-form-field appearance='outline'>
             <mat-label>Choose Student</mat-label>
             <mat-select formControlName='student'>
-              <mat-option *ngFor="let student of students" [value]='student'>
-                {{ student }}
+              <mat-option *ngFor="let student of students;index as i" [value]='student.username'>
+               <p *ngIf="i !== 0"> {{student.username }} </p>
               </mat-option>
             </mat-select>
             <mat-error *ngIf="this.appointmentForm.get('student')?.hasError('required')">Required Field must be selected</mat-error>
@@ -18,14 +18,14 @@
       <mat-form-field [draggable]='true' appearance='outline' class="full-width" >
         <mat-label>Pick a Date</mat-label>
         <input matInput placeholder="(DD/MM/YYYY)" formControlName='date'>
-        <mat-error *ngIf="this.appointmentForm.get('date')?.hasError('required')">Required field cannot be blank</mat-error> 
-        <mat-error *ngIf="this.appointmentForm.get('date')?.hasError('minlength')">Character length cannot be less than 8, seperate with '/ or -'</mat-error> 
+        <mat-error *ngIf="this.appointmentForm.get('date')?.hasError('required')">Required field cannot be blank</mat-error>
+        <mat-error *ngIf="this.appointmentForm.get('date')?.hasError('minlength')">Character length cannot be less than 8, seperate with '/ or -'</mat-error>
         <mat-error *ngIf="this.appointmentForm.get('date')?.hasError( 'maxlength')">Character length must not exceed 10, seperate with '/ or -'</mat-error>
       </mat-form-field>
       <mat-form-field [draggable]='true' appearance='outline' class="full-width" >
         <mat-label>Choose time</mat-label>
         <input matInput placeholder="(HH:MM)" formControlName='time'>
-        <mat-error *ngIf="this.appointmentForm.get('time')?.hasError('required')">Required filed cannot be blank</mat-error> 
+        <mat-error *ngIf="this.appointmentForm.get('time')?.hasError('required')">Required filed cannot be blank</mat-error>
         <mat-error *ngIf="this.appointmentForm.get('time')?.hasError('minlength') || this.appointmentForm.get('time')?.hasError( 'maxlength')">Character length must be exactly 5, seperate with ': or -'</mat-error>
       </mat-form-field>
       <mat-form-field [draggable]='true' appearance='outline' class="full-width" >

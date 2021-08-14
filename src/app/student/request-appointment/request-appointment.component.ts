@@ -12,9 +12,14 @@ import { AppService } from 'src/app/app.service';
 export class RequestAppointmentComponent implements OnInit {
   reqForm!: FormGroup;
   loading = false;
-  supervisors = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', 'Mal. S M Tanimu'];
+  // supervisors = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', 'Mal. S M Tanimu'];
 
-  constructor(private route: Router, private toastr: ToastrService, private fb: FormBuilder, private serve: AppService) {
+  constructor(
+    private route: Router,
+    private toastr: ToastrService,
+    private fb: FormBuilder,
+    private serve: AppService
+    ) {
   }
 
   ngOnInit(): void {
@@ -22,7 +27,7 @@ export class RequestAppointmentComponent implements OnInit {
       date: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
       time: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
       student: this.serve.currentUser.username,
-      supervisor: ['', Validators.required],
+      supervisor: this.serve.currentUser.email,
       status: 'Pending'
     });
   }

@@ -9,9 +9,17 @@
         <mat-label>Project Title</mat-label>
         <input matInput placeholder='Design and Implementation of GPS tracking System' formControlName='title'>
       </mat-form-field>
-      <mat-form-field [draggable]='true' appearance='outline' class="full-width">
+      <!-- <mat-form-field [draggable]='true' appearance='outline' class="full-width">
         <mat-label>Submitted By</mat-label>
         <input matInput placeholder='Dr.Faruk Umar Ambursa' formControlName='supervisor'>
+      </mat-form-field> -->
+      <mat-form-field [draggable]='true' appearance='outline' class="full-width">
+        <mat-label>Submitted By</mat-label>
+        <mat-select formControlName='supervisor'>
+          <mat-option *ngFor="let supervisor of supervisors" [value]='supervisor.fullname'>
+            {{ supervisor.fullname }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
       <button mat-button class="button" [disabled]='this.uploadTopicForm.invalid'>
         <mat-spinner *ngIf='loading' [diameter]='29'></mat-spinner>

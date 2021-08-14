@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AppService } from 'src/app/app.service';
 
 @Component({
@@ -22,8 +21,8 @@ export class StudentListComponent implements OnInit {
 
   getUsers(): void{
     this.serve.getUsers().subscribe((data: any) => {
-      this.students = data;
+      this.students = data.filter((user: any) => user.email === this.serve.currentUser.email);
+      return this.students;
     });
   }
-
 }

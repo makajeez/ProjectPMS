@@ -6,31 +6,31 @@
         <td>
           <h3>S/No</h3>
         </td>
-        <td>
+        <!-- <td>
           <h3>Fullname</h3>
-        </td>
+        </td> -->
         <td>
           <h3>RegistrationNo</h3>
         </td>
-        <td>
-          <h3>Email</h3>
-        </td>
+        <!-- <td>
+          <h3>Supervisor</h3>
+        </td> -->
       </tr>
     </thead>
     <tbody>
       <tr class="" style="margin-bottom: 20px; border-radius: 10px;" *ngFor="let student of students;index as i">
-        <td>
-          {{ i + 1}}
+        <td *ngIf="i !== 0">
+          {{ i }}
         </td>
-        <td>
-          {{student.FirstName}} {{student.LastName}} 
+        <!-- <td>
+          {{student.FirstName}} {{student.LastName}}
+        </td> -->
+        <td *ngIf="i !== 0">
+        {{student.username}}
         </td>
-        <td>
-        {{student.username}} 
-        </td>
-        <td>
+        <!-- <td>
           {{student.email}}
-        </td>
+        </td> -->
       </tr>
     </tbody>
 </table>

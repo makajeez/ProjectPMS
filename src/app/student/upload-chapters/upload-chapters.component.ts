@@ -14,7 +14,7 @@ export class UploadChaptersComponent implements OnInit {
   ProjectChapterForm!: FormGroup;
   src = '';
   loading = false;
-  supervisors = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', 'Mal. S M Tanimu'];
+  // supervisors = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', 'Mal. S M Tanimu'];
   chapters = ['Chapter One', 'Chapter Two', 'Chapter Three', 'Chapter Four', 'Chapter Five', 'All Chapters'];
 
   constructor(
@@ -29,7 +29,7 @@ export class UploadChaptersComponent implements OnInit {
     this.ProjectChapterForm = this.fb.group({
       chapter_number: ['', Validators.required],
       chapter_file: ['', Validators.required],
-      supervisor: ['', Validators.required],
+      supervisor: this.serve.currentUser.email,
       student: this.serve.currentUser.username,
       status: 'Pending'
     });
