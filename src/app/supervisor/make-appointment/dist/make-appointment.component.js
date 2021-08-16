@@ -31,7 +31,7 @@ var MakeAppointmentComponent = /** @class */ (function () {
     MakeAppointmentComponent.prototype.sendInvite = function () {
         var _this = this;
         this.loading = true;
-        return this.http.post('http://127.0.0.1:8000/invite/', JSON.stringify(this.appointmentForm.value)).subscribe({
+        return this.http.post('https://project-pms.herokuapp.com/invite/', JSON.stringify(this.appointmentForm.value)).subscribe({
             next: function (data) {
                 _this.loading = false;
                 _this.toastr.success('Invitation Sent', 'Success', { timeOut: 3000 });

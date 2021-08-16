@@ -13,7 +13,7 @@ var ReviewSubmissionsComponent = /** @class */ (function () {
     function ReviewSubmissionsComponent(http, serve) {
         this.http = http;
         this.serve = serve;
-        this.url = 'http://localhost:8000';
+        this.url = 'https://project-pms.herokuapp.com';
     }
     ReviewSubmissionsComponent.prototype.ngOnInit = function () {
         this.getPro();
@@ -22,19 +22,19 @@ var ReviewSubmissionsComponent = /** @class */ (function () {
     };
     ReviewSubmissionsComponent.prototype.getReq = function () {
         var _this = this;
-        return this.http.get("http://127.0.0.1:8000/req_meeting/").subscribe(function (data) {
+        return this.http.get("https://project-pms.herokuapp.com/req_meeting/").subscribe(function (data) {
             _this.filteredMeeting = data;
         });
     };
     ReviewSubmissionsComponent.prototype.getPro = function () {
         var _this = this;
-        return this.http.get("http://127.0.0.1:8000/proposal/").subscribe(function (data) {
+        return this.http.get("https://project-pms.herokuapp.com/proposal/").subscribe(function (data) {
             _this.proposals = data;
         });
     };
     ReviewSubmissionsComponent.prototype.getChap = function () {
         var _this = this;
-        return this.http.get("http://127.0.0.1:8000/chapter/").subscribe(function (data) {
+        return this.http.get("https://project-pms.herokuapp.com/chapter/").subscribe(function (data) {
             _this.chapters = data;
         });
     };

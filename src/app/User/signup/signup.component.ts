@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
     this.getSuper();
   }
   getSuper(): any{
-    return this.http.get('http://127.0.0.1:8000/super').subscribe(data => {
+    return this.http.get('https://project-pms.herokuapp.com/super').subscribe(data => {
       this.supervisors = data;
       console.log(data);
     });

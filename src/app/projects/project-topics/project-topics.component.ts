@@ -58,7 +58,7 @@ export class ProjectTopicsComponent implements OnInit {
   }
 
   getTopics(): any{
-    return this.http.get('http://127.0.0.1:8000/upload_topic/').subscribe((data: any) => {
+    return this.http.get('https://project-pms.herokuapp.com/upload_topic/').subscribe((data: any) => {
       this.topics = data;
     });
   }

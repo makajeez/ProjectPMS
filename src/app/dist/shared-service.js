@@ -11,7 +11,7 @@ var core_1 = require("@angular/core");
 var SharedService = /** @class */ (function () {
     function SharedService(http) {
         this.http = http;
-        this.ApiUrl = 'http://127.0.0.1:8000/signup/';
+        this.ApiUrl = 'https://project-pms.herokuapp.com/signup/';
     }
     SharedService.prototype.registerUser = function (form) {
         //  const headers = new HttpHeaders({

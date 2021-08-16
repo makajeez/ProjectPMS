@@ -48,7 +48,7 @@ var CompletedProjectComponent = /** @class */ (function () {
                 uploadDate: '9/23/2013'
             },
         ];
-        this.url = 'http://127.0.0.1:8000';
+        this.url = 'https://project-pms.herokuapp.com';
     }
     CompletedProjectComponent.prototype.ngOnInit = function () {
         this.getProject();

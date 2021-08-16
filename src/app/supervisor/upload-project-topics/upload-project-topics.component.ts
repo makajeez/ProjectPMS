@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upload-project-topics',
@@ -30,7 +30,7 @@ export class UploadProjectTopicsComponent implements OnInit {
     this.getSuper();
   }
   getSuper(): any {
-    this.http.get('http://127.0.0.1:8000/super/').subscribe({
+    this.http.get('https://project-pms.herokuapp.com/super/').subscribe({
       next: (data: any) => {
         this.supervisors = data;
       },
@@ -41,7 +41,7 @@ export class UploadProjectTopicsComponent implements OnInit {
   }
   logData(): any{
     this.loading = true;
-    return this.http.post('http://127.0.0.1:8000/upload_topic/', JSON.stringify(this.uploadTopicForm.value)).subscribe({
+    return this.http.post('https://project-pms.herokuapp.com/upload_topic/', JSON.stringify(this.uploadTopicForm.value)).subscribe({
       next: (data: any) => {
         this.loading = false;
         this.toastr.success('Successfully Uploaded', 'Success', {timeOut: 3000});

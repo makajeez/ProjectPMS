@@ -12,7 +12,7 @@ var http_1 = require("@angular/common/http");
 var AppService = /** @class */ (function () {
     function AppService(http) {
         this.http = http;
-        this.api = 'http://127.0.0.1:8000';
+        this.api = 'https://project-pms.herokuapp.com';
     }
     AppService.prototype.signUp = function (form) {
         var option = { headers: new http_1.HttpHeaders({

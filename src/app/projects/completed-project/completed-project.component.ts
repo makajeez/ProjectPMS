@@ -48,7 +48,7 @@ export class CompletedProjectComponent implements OnInit {
   ];
 
   constructor(private http: HttpClient) { }
-  url = 'http://127.0.0.1:8000';
+  url = 'https://project-pms.herokuapp.com';
   ngOnInit(): void {
     this.getProject();
   }

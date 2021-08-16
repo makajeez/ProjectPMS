@@ -50,7 +50,7 @@ export class UploadCompletedProjectComponent implements OnInit {
     }
   }
   getSuper(): any {
-    this.http.get('http://127.0.0.1:8000/super/').subscribe({
+    this.http.get('https://project-pms.herokuapp.com/super/').subscribe({
       next: (data: any) => {
         this.supervisors = data;
       },

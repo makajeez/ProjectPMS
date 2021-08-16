@@ -27,7 +27,7 @@ var UploadProjectTopicsComponent = /** @class */ (function () {
     UploadProjectTopicsComponent.prototype.logData = function () {
         var _this = this;
         this.loading = true;
-        return this.http.post('http://127.0.0.1:8000/upload_topic/', JSON.stringify(this.uploadTopicForm.value)).subscribe({
+        return this.http.post('https://project-pms.herokuapp.com/upload_topic/', JSON.stringify(this.uploadTopicForm.value)).subscribe({
             next: function (data) {
                 _this.loading = false;
                 _this.toastr.success('Successfully Uploaded', 'Success', { timeOut: 3000 });

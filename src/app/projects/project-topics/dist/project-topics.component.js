@@ -59,7 +59,7 @@ var ProjectTopicsComponent = /** @class */ (function () {
     };
     ProjectTopicsComponent.prototype.getTopics = function () {
         var _this = this;
-        return this.http.get('http://127.0.0.1:8000/upload_topic/').subscribe(function (data) {
+        return this.http.get('https://project-pms.herokuapp.com/upload_topic/').subscribe(function (data) {
             _this.topics = data;
         });
     };

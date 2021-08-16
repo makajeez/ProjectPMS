@@ -9,7 +9,7 @@ import { FormGroup } from '@angular/forms';
   providedIn: 'root'
 })
 export class AppService {
-  api = 'http://127.0.0.1:8000';
+  api = 'https://project-pms.herokuapp.com';
   currentUser: any;
   isLoggedIn!: boolean;
 

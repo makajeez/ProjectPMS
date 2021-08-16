@@ -35,7 +35,7 @@ export class MakeAppointmentComponent implements OnInit {
     this.getStudents();
   }
   getStudents(): any{
-    this.http.get('http://127.0.0.1:8000/user/').subscribe({
+    this.http.get('https://project-pms.herokuapp.com/user/').subscribe({
       next: (data: any) => {
         this.students = data.filter((user: any) => user.email === this.serve.currentUser.email);
         return this.students;
@@ -47,7 +47,7 @@ export class MakeAppointmentComponent implements OnInit {
   }
   sendInvite(): any{
     this.loading = true;
-    return this.http.post('http://127.0.0.1:8000/invite/', JSON.stringify(this.appointmentForm.value)).subscribe({
+    return this.http.post('https://project-pms.herokuapp.com/invite/', JSON.stringify(this.appointmentForm.value)).subscribe({
       next: (data: any) => {
         this.loading = false;
         this.toastr.success('Invitation Sent', 'Success', {timeOut: 3000});
