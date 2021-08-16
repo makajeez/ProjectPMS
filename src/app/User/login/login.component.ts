@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
         this.loading = false;
         this.serve.isLoggedIn = true;
         this.serve.currentUser = data;
-        console.log(data);
         this.toastr.success('Login Successful', 'Success', {timeOut: 3000});
         if (data.username.match(/^CST/i)) {
           this.route.navigate(['/']);
@@ -48,7 +47,7 @@ export class LoginComponent implements OnInit {
       },
       error: (error: any) => {
         this.loading = false;
-        this.toastr.error(`Check your username and password`, 'Error', {timeOut: 2000});
+        this.toastr.error(`Check your username or password`, 'Error', {timeOut: 2000});
       }
     });
   }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AppService } from 'src/app/app.service';
 
 @Component({
@@ -22,14 +21,9 @@ export class ViewChapterStatusComponent implements OnInit {
     this.getChaps();
   }
 
-  // this.serve.getUsers().subscribe((data: any) => {
-  //   this.students = data.filter((user: any) => user.email === this.serve.currentUser.email);
-  //   return this.students;
-  // });
   getProp(): any{
     this.serve.getProposals().subscribe({
       next: (data: any) => {
-        console.log(data);
         this.proposals = data.filter((user: any) => user.student === this.serve.currentUser.username);
         return this.proposals;
       },

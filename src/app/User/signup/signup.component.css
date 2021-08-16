@@ -26,3 +26,6 @@ table {
   display: table;
   margin: 0 auto;
 }
+.card {
+  border-left-color: #51606e;
+}

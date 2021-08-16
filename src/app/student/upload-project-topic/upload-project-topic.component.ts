@@ -13,20 +13,7 @@ import { AppService } from 'src/app/app.service';
 export class UploadProjectTopicComponent implements OnInit {
   src = '';
   loading = false;
-  // supervisors = [
-  //   {
-  //     username: 'Dr. Faruk Umar Ambursa',
-  //     id: 1
-  //   },
-  //   {
-  //     username: 'Dr.Khalid',
-  //     id: 2
-  //   },
-  //   {
-  //     username: 'Mal. S M Tanimu',
-  //     id: 3
-  //   }
-  // ];
+
   proposalForm!: FormGroup;
   constructor(
     private fb: FormBuilder,
@@ -79,8 +66,8 @@ export class UploadProjectTopicComponent implements OnInit {
       this.src = 'assets/fileIcon/doc.jpeg';
     }
     if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.proposalForm.get('proposal_file')?.setValue(file);
+      const pFile = event.target.files[0];
+      this.proposalForm.get('proposal_file')?.setValue(pFile);
     }
   }
 }

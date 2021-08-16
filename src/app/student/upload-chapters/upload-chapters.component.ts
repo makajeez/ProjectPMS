@@ -68,7 +68,7 @@ export class UploadChaptersComponent implements OnInit {
       error: (error: { message: any; }) => {
         this.loading = false;
         this.toastr.error(`${error}`, '', {timeOut: 3000});
-        this.route.navigate(['']);
+        // this.route.navigate(['']);
       }
     });
   }

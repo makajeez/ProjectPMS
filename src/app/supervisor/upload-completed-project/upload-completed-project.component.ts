@@ -15,7 +15,7 @@ export class UploadCompletedProjectComponent implements OnInit {
   projectForm!: FormGroup;
   loading = false;
   supervisors: any;
-  years = ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
+  years = ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021'];
 
   constructor(
     private fb: FormBuilder,
@@ -82,5 +82,4 @@ export class UploadCompletedProjectComponent implements OnInit {
       }
     });
   }
-
 }

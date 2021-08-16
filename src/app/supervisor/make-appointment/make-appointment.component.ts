@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AppService } from 'src/app/app.service';
 
@@ -11,7 +11,6 @@ import { AppService } from 'src/app/app.service';
   styleUrls: ['./make-appointment.component.css']
 })
 export class MakeAppointmentComponent implements OnInit {
-  // students = ['Buhari Ahmed Alhassan', 'Khadija Mahmoud Falgore', 'Mubarak Daha Isa', 'Azeez Miudeen Owolabi'];
   students: any;
   loading = false;
   appointmentForm!: FormGroup;
@@ -59,5 +58,4 @@ export class MakeAppointmentComponent implements OnInit {
       }
     });
   }
-
 }

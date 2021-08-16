@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   constructor(private serve: AppService) { }
 
   ngOnInit(): void {
-    console.log(this.serve.currentUser);
+    // console.log(this.serve.currentUser);
   }
 
 }

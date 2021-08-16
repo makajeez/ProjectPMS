@@ -2,3 +2,12 @@ a {
   text-decoration: none;
   color: #e94412;
 }
+.card {
+  border-left-color: #e94412;
+}
+.card:hover {
+  border-left-color: #e94412;
+}
+.card {
+  border-left-color: #51606e;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -36,7 +36,6 @@ export class SignupComponent implements OnInit {
   getSuper(): any{
     return this.http.get('https://project-pms.herokuapp.com/super').subscribe(data => {
       this.supervisors = data;
-      console.log(data);
     });
   }
   signUp(): any {

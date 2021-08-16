@@ -64,12 +64,15 @@ input[type='file'] {
   border-radius: 0px;
   align-self: start !important  ;
 }
+.smaller {
+  width: 70vw;
+}
 .card {
   color: #1976d2;
   min-height: 100% !important;
   margin: 0 auto;
-  border-radius: 20px;
-  /* border-left-color: #1976d2; */
+  border-radius: 0px;
+  transition: all 1.5s ease;
   border-right-color: transparent;
   border-top-color: transparent;
   border-bottom-color: transparent;
@@ -96,5 +99,18 @@ hr {
 }
 #black {
   color: black !important;
-
+}
+.blink {
+  animation: blink .5s ease-in-out .05s infinite alternate none;
+}
+@keyframes blink {
+  0% {
+    font-size: small;
+  }
+  50% {
+    font-size: larger;
+  }
+  100% {
+    font-size: small;
+  }
 }

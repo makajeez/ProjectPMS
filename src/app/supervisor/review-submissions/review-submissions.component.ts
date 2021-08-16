@@ -27,7 +27,6 @@ export class ReviewSubmissionsComponent implements OnInit {
 
   getReq(): any{
     this.http.get(`${this.url}/req_meeting/`).subscribe((data: any) => {
-      // console.log(data);
       this.filteredMeeting = data.filter((user: any) => user.supervisor === this.serve.currentUser.email);
       return this.filteredMeeting;
     });
@@ -87,7 +86,6 @@ export class ReviewSubmissionsComponent implements OnInit {
     .subscribe({
       next: (data: any) => {
         this.toastr.success(`Proposal Accepted`, 'Success', {timeOut: 2000});
-        console.log(data);
       },
       error: (error: any) => {
         this.toastr.error('Proposal Rejected', 'Error', {timeOut: 2000});
@@ -107,7 +105,6 @@ export class ReviewSubmissionsComponent implements OnInit {
     return this.http.put(`${this.url}/proposal/${prop.id}/`, formData).subscribe({
       next: (data: any) => {
         this.toastr.success(`Proposal Rejection sent`, 'Success', {timeOut: 2000});
-        console.log(data);
       },
       error: (error: any) => {
         this.toastr.error(`Proposal Update Failed \n
@@ -119,7 +116,6 @@ export class ReviewSubmissionsComponent implements OnInit {
   getChap(): any{
     this.http.get(`${this.url}/chapter/`).subscribe((data: any) => {
       this.chapters = data.filter((user: any) => user.supervisor === this.serve.currentUser.email);
-      console.log(this.chapters);
       return this.chapters;
     });
   }
@@ -136,7 +132,6 @@ export class ReviewSubmissionsComponent implements OnInit {
     return this.http.put(`${this.url}/chapter/${chap.id}/`, formData).subscribe({
       next: (data: any) => {
         this.toastr.success(`Chapter Accept Sent`, 'Success', {timeOut: 2000});
-        console.log(data);
       },
       error: (error: any) => {
         this.toastr.error(`Chapter Update Failed That's All we know`, 'Error', {timeOut: 2000});
@@ -157,7 +152,6 @@ export class ReviewSubmissionsComponent implements OnInit {
     return this.http.put(`${this.url}/chapter/${chap.id}/`, formData).subscribe({
       next: (data: any) => {
         this.toastr.success(`Chapter Rejection Sent`, 'Success', {timeOut: 2000});
-        console.log(data);
       },
       error: (error: any) => {
         this.toastr.error(`Chapter Update Failed That's All we know`, 'Error', {timeOut: 2000});

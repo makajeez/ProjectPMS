@@ -1,54 +1,58 @@
-<div class="card mat-elevation-z20"style="margin-top: 30px;">
+<div class="smaller container">
   <div class="container">
-    <h1>Signup </h1>
-    <h3 style="text-align: center;">Create an account, lets get your details</h3>
-    <!-- <div>{{this.signupForm.value | json}}</div> -->
-    <div class="container">
+    <div class="card mat-elevation-z20"style="margin-top: 30px;">
       <div class="container">
-        <hr id="black">
+        <h1>Signup </h1>
+        <h3 style="text-align: center;">Create an account, lets get your details</h3>
+        <!-- <div>{{this.signupForm.value | json}}</div> -->
+        <div class="container">
+          <div class="container">
+            <hr id="black">
+          </div>
+        </div>
       </div>
+      <form method="POST" class="mt-50" [formGroup]='signupForm' (ngSubmit)='signUp()'>
+        <mat-form-field [draggable]='true' appearance='outline'>
+          <mat-label>Select Supervisor</mat-label>
+          <mat-select formControlName='email'>
+            <mat-option value='None'>None</mat-option>
+            <mat-option *ngFor="let super of supervisors" [value]='super.email'>
+              {{super.fullname}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance='legacy' class="full-width">
+          <mat-label>Registration No (Username)</mat-label>
+          <input matInput placeholder="CST-16-C0M-00543" formControlName='username'>
+          <mat-icon matSuffix>edit</mat-icon>
+          <mat-error *ngIf="this.signupForm.get('username')?.hasError('required')">Required field must be filled</mat-error>
+          <mat-hint align='end'>{{this.signupForm.get('username')?.value.length || 0}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance='legacy' class="full-width">
+          <mat-label>Password:</mat-label>
+          <input matInput [type]="hide? 'password': 'text'" placeholder="hhh! Enter Something Super Secret" formControlName='password1'>
+          <mat-icon matSuffix (click)="hide = !hide">{{ hide?'visibility':'visibility_off'}} </mat-icon>
+          <mat-error *ngIf="this.signupForm.get('password1')?.hasError('minlength')">must be at least 8 characters long</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance='legacy' class="full-width">
+          <mat-label>Re-Type Password:</mat-label>
+          <input matInput [type]="hide1? 'password': 'text'" placeholder="hhh! Enter Something Super Secret" formControlName='password2'>
+          <mat-icon matSuffix (click)="hide1 = !hide1">{{ hide1?'visibility':'visibility_off'}} </mat-icon>
+          <mat-error *ngIf="this.signupForm.get('password2')?.hasError('minlength')">must be at least 8 characters long</mat-error>
+        </mat-form-field>
+
+        <br>
+        <button mat-button class="button" >
+          <span *ngIf="loading">
+            Signing In, Please Wait...
+          </span>
+          <span *ngIf='!loading'>Sign Up</span>
+        </button>
+        <h4 style="text-align: center;">Already have an account?  <a [routerLink]="['/login']">Login</a></h4>
+      </form>
     </div>
   </div>
-  <form method="POST" class="mt-50" [formGroup]='signupForm' (ngSubmit)='signUp()'>
-    <mat-form-field [draggable]='true' appearance='outline'>
-      <mat-label>Select Supervisor</mat-label>
-      <mat-select formControlName='email'>
-        <mat-option value='None'>None</mat-option>
-        <mat-option *ngFor="let super of supervisors" [value]='super.email'>
-          {{super.fullname}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance='legacy' class="full-width">
-      <mat-label>Registration No (Username)</mat-label>
-      <input matInput placeholder="CST-16-C0M-00543" formControlName='username'>
-      <mat-icon matSuffix>edit</mat-icon>
-      <mat-error *ngIf="this.signupForm.get('username')?.hasError('required')">Required field must be filled</mat-error>
-      <mat-hint align='end'>{{this.signupForm.get('username')?.value.length || 0}}</mat-hint>
-    </mat-form-field>
-    <mat-form-field appearance='legacy' class="full-width">
-      <mat-label>Password:</mat-label>
-      <input matInput [type]="hide? 'password': 'text'" placeholder="hhh! Enter Something Super Secret" formControlName='password1'>
-      <mat-icon matSuffix (click)="hide = !hide">{{ hide?'visibility':'visibility_off'}} </mat-icon>
-      <mat-error *ngIf="this.signupForm.get('password1')?.hasError('minlength')">must be at least 8 characters long</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance='legacy' class="full-width">
-      <mat-label>Re-Type Password:</mat-label>
-      <input matInput [type]="hide1? 'password': 'text'" placeholder="hhh! Enter Something Super Secret" formControlName='password2'>
-      <mat-icon matSuffix (click)="hide1 = !hide1">{{ hide1?'visibility':'visibility_off'}} </mat-icon>
-      <mat-error *ngIf="this.signupForm.get('password2')?.hasError('minlength')">must be at least 8 characters long</mat-error>
-    </mat-form-field>
-
-    <br>
-    <button mat-button class="button" >
-      <span *ngIf="loading">
-        Signing In, Please Wait...
-      </span>
-      <span *ngIf='!loading'>Sign Up</span>
-    </button>
-    <h4 style="text-align: center;">Already have an account?  <a [routerLink]="['/login']">Login</a></h4>
-  </form>
 </div>
 
 
