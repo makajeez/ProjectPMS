@@ -12,6 +12,7 @@ import { AppService } from 'src/app/app.service';
 })
 export class LoginComponent implements OnInit {
   loading = false;
+  hide = true;
   loginForm!: FormGroup;
 
   constructor(
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): any {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
@@ -36,7 +37,8 @@ export class LoginComponent implements OnInit {
         this.loading = false;
         this.serve.isLoggedIn = true;
         this.serve.currentUser = data;
-        this.toastr.success(`Logged In Successfully`, 'Success', {timeOut: 5000});
+        console.log(data);
+        this.toastr.success('Login Successful', 'Success', {timeOut: 3000});
         if (data.username.match(/^CST/i)) {
           this.route.navigate(['/']);
         }
@@ -46,7 +48,7 @@ export class LoginComponent implements OnInit {
       },
       error: (error: any) => {
         this.loading = false;
-        this.toastr.error(`Check Your Credentials, That's All We Know`, 'Error', {timeOut: 5000});
+        this.toastr.error(`Check your username and password`, 'Error', {timeOut: 2000});
       }
     });
   }

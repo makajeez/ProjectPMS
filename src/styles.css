@@ -80,6 +80,7 @@ input[type='file'] {
 .button {
   background-color: #e94412;
   justify-content: center;
+  justify-items: center;
   align-items: center;
   color: black;
   border: none;
@@ -95,5 +96,5 @@ hr {
 }
 #black {
   color: black !important;
-  
+
 }

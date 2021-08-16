@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-// import { Router } from '@angular/router';
 import { AppService } from 'src/app/app.service';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
-// declare let toastr: any;
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
@@ -16,23 +13,30 @@ import { ToastrService } from 'ngx-toastr';
 export class SignupComponent implements OnInit {
   loading = false;
   hide = true;
+  hide1 = true;
   signupForm!: FormGroup;
+  supervisors: any;
 
   constructor(private fb: FormBuilder,
-              private http: HttpClient,
               private route: Router,
               private toastr: ToastrService,
-              private serve: AppService
+              private serve: AppService,
+              private http: HttpClient
     ) { }
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
-      first_name: ['', Validators.required],
-      last_name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      username: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
+      email: '',
+      username: ['', [Validators.required]],
       password1: ['', [Validators.required, Validators.minLength(8)]],
       password2: ['', [Validators.required, Validators.minLength(8)]],
+    });
+    this.getSuper();
+  }
+  getSuper(): any{
+    return this.http.get('http://127.0.0.1:8000/super').subscribe(data => {
+      this.supervisors = data;
+      console.log(data);
     });
   }
   signUp(): any {
@@ -41,12 +45,17 @@ export class SignupComponent implements OnInit {
     return this.serve.signUp(body).subscribe({
       next: (data: any) => {
         this.loading = false;
-        this.toastr.success(`User ${body.get('username')?.value} Registered Successfully`, 'Success', {timeOut: 5000});
+        this.toastr.success(`${body.get('username')?.value} Registered Successfully`, 'Success', {timeOut: 3000});
         this.route.navigate(['/login']);
       },
       error: (error: any) => {
         this.loading = false;
-        this.toastr.error(`User ${body.get('username')?.value} Not Registered`, 'Error', {timeOut: 5000});
+        if (error.status === 500) {
+          this.route.navigate(['/login']);
+          this.toastr.success(`${body.get('username')?.value} Registered Successfully`, 'Success', {timeOut: 3000});
+        } else {
+          this.toastr.error(`User ${body.get('username')?.value} Not Registered`, 'Error', {timeOut: 3000});
+        }
       }
     });
     }

@@ -16,23 +16,23 @@
 </div> -->
 
 <nav class="navbar navbar-expand-lg toolbar">
-  <h2 [routerLink]="'/'" style="cursor:pointer;color: white !important;">Undergraduate PMS</h2>
+  <h2 style="cursor:pointer;color: white !important;">Undergraduate PMS</h2>
   <div class="spacer"></div>
-  
-  <div class="spacer"></div>
-  <div class="spacer"></div>
+
   <div class="spacer"></div>
   <div class="spacer"></div>
   <div class="spacer"></div>
   <div class="spacer"></div>
-  
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+
   <button class='navbar-toggler' type="button" style="border-color: transparent;" (click)='isMenuCollapsed = !isMenuCollapsed'><span *ngIf="isMenuCollapsed"> &#9776;</span> <span *ngIf="!isMenuCollapsed"> X </span> </button>
   <div class="spacer"></div>
   <div [ngbCollapse]='isMenuCollapsed' class='collapse navbar-collapse'>
     <ul class="navbar-nav">
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="this.serve.currentUser !== undefined" ngbTooltip='Download Project Guidelines'>
         <a href='http://localhost:8000/media/files/major_project.pdf' download="http://localhost:8000/media/files/major_project.pdf" target="_blank">
-          <button class="mt-10 ml-10 mr-10" ngbTooltip='Download Project Guidelines' (click)='isMenuCollapsed =true'>
+          <button class="mt-10 ml-10 mr-10" (click)='isMenuCollapsed =true' value="Download Project Guidelines">
             <mat-icon>download</mat-icon>
           </button>
         </a>
@@ -41,11 +41,11 @@
       <!-- <li class="nav-item">
         <button class="mt-10 ml-10 mr-10" [routerLink]="['/login']" ngbTooltip='Login' (click)='isMenuCollapsed =true'><mat-icon matPrefix>login</mat-icon></button>
       </li> -->
-      <!-- <div class="spacer"></div>
-      <li class="nav-item" *ngIf='isLoggedIn==true'>
+      <!-- <div class="spacer"></div> -->
+      <li class="nav-item" *ngIf='this.serve.currentUser !== undefined'>
         <button class="mt-10 ml-10 mr-10" ngbTooltip='Logout' (click)='isMenuCollapsed =true' (click)='logout()'><mat-icon>logout</mat-icon></button>
       </li>
-      <div class="spacer"></div> -->
+      <!-- <div class="spacer"></div> -->
       <!-- <li class="nav-item">
         <button class="mt-10 ml-10 mr-10" [routerLink]="['/signup']" ngbTooltip='Sign Up' (click)='isMenuCollapsed =true'><mat-icon>person_add</mat-icon></button>
       </li> -->

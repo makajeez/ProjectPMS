@@ -11,19 +11,18 @@ import { AppService } from './app.service';
 export class AppComponent implements OnInit {
   title = 'Project_Monitoring_System';
   public isMenuCollapsed = true;
-  isLoggedIn = this.serve.isLoggedIn;
-  // @Input() currentUser: any;
 
   constructor(
     public router: Router,
-    private serve: AppService
+    public serve: AppService
     ) {
 
   }
   ngOnInit(): void {
-    // this.router.navigate(['/login']);
+    this.router.navigate(['/signup']);
   }
   logout(): void{
-    this.serve.logout();
+   this.serve.logout();
+   this.router.navigate(['/login']);
   }
 }

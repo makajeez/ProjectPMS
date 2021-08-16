@@ -13,20 +13,20 @@ import { AppService } from 'src/app/app.service';
 export class UploadProjectTopicComponent implements OnInit {
   src = '';
   loading = false;
-  supervisors = [
-    {
-      username: 'Dr. Faruk Umar Ambursa',
-      id: 1
-    },
-    {
-      username: 'Dr.Khalid',
-      id: 2
-    },
-    {
-      username: 'Mal. S M Tanimu',
-      id: 3
-    }
-  ];
+  // supervisors = [
+  //   {
+  //     username: 'Dr. Faruk Umar Ambursa',
+  //     id: 1
+  //   },
+  //   {
+  //     username: 'Dr.Khalid',
+  //     id: 2
+  //   },
+  //   {
+  //     username: 'Mal. S M Tanimu',
+  //     id: 3
+  //   }
+  // ];
   proposalForm!: FormGroup;
   constructor(
     private fb: FormBuilder,
@@ -38,7 +38,7 @@ export class UploadProjectTopicComponent implements OnInit {
 
   ngOnInit(): void {
     this.proposalForm = this.fb.group({
-      supervisor: ['', Validators.required],
+      supervisor: this.serve.currentUser.email,
       proposal_title: ['', Validators.required],
       proposal_file: '',
       student: this.serve.currentUser.username,

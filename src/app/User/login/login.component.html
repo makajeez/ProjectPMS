@@ -10,27 +10,30 @@
       </div>
       <form method="POST" class="mt-50" [formGroup]="loginForm" (ngSubmit)="login()">
         <mat-form-field appearance='legacy' class="full-width">
-          <mat-label>Registration Number</mat-label>
+          <mat-label>Username</mat-label>
           <input matInput placeholder="CST-16-C0M-00543" formControlName='username'>
           <mat-icon matSuffix>edit</mat-icon>
-          <mat-error align='start' class="error">must be exactly 16 characters</mat-error>
-          <mat-hint align='end'>{{this.loginForm.get('username')?.value?.length || 0}}/16</mat-hint>
+          <mat-error align='start' class="error" *ngIf="this.loginForm.get('username')?.hasError('required')">required field must be filled</mat-error>
+          <mat-hint align='end'>{{this.loginForm.get('username')?.value?.length || 0}}</mat-hint>
         </mat-form-field>
         <mat-form-field appearance='legacy' class="full-width">
           <mat-label>Password</mat-label>
-          <input type='password' matInput placeholder="Shhh! Enter Something Super Secret" formControlName='password'>
-          <mat-icon matSuffix>visibility</mat-icon>
+          <input [type]="hide? 'password': 'text'" matInput placeholder="Shhh! Enter Something Super Secret" formControlName='password'>
+          <mat-icon matSuffix (click)="hide = !hide">{{ hide?'visibility':'visibility_off'}} </mat-icon>
+          <mat-error align='start' class="error" *ngIf="this.loginForm.get('password')?.hasError('required')">required field must be filled</mat-error>
           <mat-error align='start' class="error" *ngIf="this.loginForm.get('password')?.errors">must be at least 8 characters long</mat-error>
         </mat-form-field>
 
-        <button mat-button class="button"><mat-spinner [diameter]='29' *ngIf="loading"></mat-spinner><span *ngIf='!loading'>Login</span></button>
+        <button mat-button class="button">
+          <span *ngIf="loading">
+            Please Wait...
+          </span>
+          <span *ngIf='!loading'>Login</span>
+        </button>
         <h4 style="text-align: center;">Don't have an account?  <a [routerLink]="['/signup']">SignUp</a> here.</h4>
       </form>
     </div>
   </div>
 </div>
 <br>
-<div>
-  form: {{this.loginForm.value  | json}}
-</div>
 

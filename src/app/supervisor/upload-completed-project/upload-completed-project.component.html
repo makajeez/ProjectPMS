@@ -24,8 +24,8 @@
       <mat-form-field [draggable]='true' appearance='outline' class="full-width">
         <mat-label>Supervisor</mat-label>
         <mat-select formControlName='supervisor'>
-          <mat-option *ngFor="let supervisor of supervisors" [value]='supervisor'>
-            {{ supervisor }}
+          <mat-option *ngFor="let supervisor of supervisors" [value]='supervisor.fullname'>
+            {{ supervisor.fullname }}
           </mat-option>
         </mat-select>
       </mat-form-field>

@@ -1,10 +1,10 @@
 <div class="container mb-30">
-  <h1>Submit Project Topic</h1>
+  <h1>Submit Proposal Topic</h1>
   <hr>
 </div>
 <div class="card mat-elevation-z20" style="min-height: 300px !important;">
   <form enctype="multipart/form-data" [formGroup]='proposalForm' (ngSubmit)='submit()'>
-    <div class="center">
+    <!-- <div class="center">
       <mat-form-field appearance='outline'>
         <mat-label>Choose supervisor</mat-label>
         <mat-select formControlName='supervisor'>
@@ -12,9 +12,9 @@
             {{ supervisor.username }}
           </mat-option>
         </mat-select>
-        <!-- <mat-error *ngIf="this.proposalForm.get('lecturer')?.hasError('required')">Required Field must be selected</mat-error> -->
+        <mat-error *ngIf="this.proposalForm.get('lecturer')?.hasError('required')">Required Field must be selected</mat-error>
       </mat-form-field>
-    </div>
+    </div> -->
 
     <mat-form-field [draggable]='true' appearance='legacy' class="full-width">
       <mat-label>Proposal Topic Name</mat-label>

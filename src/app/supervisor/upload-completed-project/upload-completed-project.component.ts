@@ -14,7 +14,7 @@ export class UploadCompletedProjectComponent implements OnInit {
   src: any;
   projectForm!: FormGroup;
   loading = false;
-  supervisors = ['Dr. Faruk Umar Ambursa', 'Dr.Khalid', 'Mal. S M Tanimu'];
+  supervisors: any;
   years = ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
 
   constructor(
@@ -33,6 +33,7 @@ export class UploadCompletedProjectComponent implements OnInit {
       supervisor: ['', Validators.required],
       project_file: ['', Validators.required]
     });
+    this.getSuper();
   }
 
   readUrl(event: any): any{
@@ -48,7 +49,16 @@ export class UploadCompletedProjectComponent implements OnInit {
       this.src = 'assets/fileIcon/doc.jpeg';
     }
   }
-
+  getSuper(): any {
+    this.http.get('http://127.0.0.1:8000/super/').subscribe({
+      next: (data: any) => {
+        this.supervisors = data;
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+    });
+  }
   submit(): any{
     this.loading = true;
     const formData = new FormData();

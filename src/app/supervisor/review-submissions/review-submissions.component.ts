@@ -20,14 +20,16 @@ export class ReviewSubmissionsComponent implements OnInit {
     private serve: AppService) { }
 
   ngOnInit(): void {
+    this.getReq();
     this.getPro();
     this.getChap();
-    this.getReq();
   }
 
   getReq(): any{
-    return this.http.get(`http://127.0.0.1:8000/req_meeting/`).subscribe(data => {
-      this.filteredMeeting = data;
+    this.http.get(`${this.url}/req_meeting/`).subscribe((data: any) => {
+      // console.log(data);
+      this.filteredMeeting = data.filter((user: any) => user.supervisor === this.serve.currentUser.email);
+      return this.filteredMeeting;
     });
   }
   acceptMeet(meet: any): any{
@@ -66,27 +68,29 @@ export class ReviewSubmissionsComponent implements OnInit {
     });
   }
   getPro(): any{
-    return this.http.get(`http://127.0.0.1:8000/proposal/`).subscribe(data => {
-      this.proposals = data;
-      console.log(data);
+    this.http.get(`${this.url}/proposal/`).subscribe((data: any) => {
+      this.proposals = data.filter((user: any) => user.supervisor === this.serve.currentUser.email);
+      return this.proposals;
     });
   }
   acceptProp(prop: any): any{
     const formData = new FormData();
 
-    formData.append('proposal_file', prop.proposal_file);
-    formData.append('proposal_title', prop.proposal_title);
+    formData.append('id', prop.id);
+    formData.append('proposal_title', `${prop.proposal_title}`);
+    formData.append('proposal_file', `${prop.proposal_file}`);
+    formData.append('supervisor', `${prop.supervisor}`);
+    formData.append('student', `${prop.student}`);
     formData.append('status', 'Accepted');
-    formData.append('student', prop.student);
-    formData.append('supervisor', prop.supervisor);
 
-    return this.http.put(`http://127.0.0.1:8000/proposal/${prop.id}/`, formData).subscribe({
+    return this.http.put(`${this.url}/proposal/${prop.id}/`, formData)
+    .subscribe({
       next: (data: any) => {
         this.toastr.success(`Proposal Accepted`, 'Success', {timeOut: 2000});
         console.log(data);
       },
       error: (error: any) => {
-        this.toastr.error('Proposal status not sent', 'Error', {timeOut: 2000});
+        this.toastr.error('Proposal Rejected', 'Error', {timeOut: 2000});
         console.log(error);
       }
     });
@@ -94,13 +98,13 @@ export class ReviewSubmissionsComponent implements OnInit {
   rejectProp(prop: any): any{
     const formData = new FormData();
 
+    formData.append('id', prop.id);
     formData.append('proposal_file', prop.proposal_file);
     formData.append('proposal_title', prop.proposal_title);
     formData.append('status', 'Rejected');
     formData.append('student', prop.student);
     formData.append('supervisor', prop.supervisor);
-    // formData.
-    return this.http.put(`http://127.0.0.1:8000/proposal/${prop.id}/`, formData).subscribe({
+    return this.http.put(`${this.url}/proposal/${prop.id}/`, formData).subscribe({
       next: (data: any) => {
         this.toastr.success(`Proposal Rejection sent`, 'Success', {timeOut: 2000});
         console.log(data);
@@ -113,8 +117,52 @@ export class ReviewSubmissionsComponent implements OnInit {
     });
   }
   getChap(): any{
-    return this.http.get(`http://127.0.0.1:8000/chapter/`).subscribe(data => {
-      this.chapters = data;
+    this.http.get(`${this.url}/chapter/`).subscribe((data: any) => {
+      this.chapters = data.filter((user: any) => user.supervisor === this.serve.currentUser.email);
+      console.log(this.chapters);
+      return this.chapters;
+    });
+  }
+  acceptChap(chap: any): any{
+    const formData = new FormData();
+
+    formData.append('id', chap.id);
+    formData.append('chapter_number', chap.chapter_number);
+    formData.append('chapter_file', chap.chapter_file);
+    formData.append('student', chap.student);
+    formData.append('supervisor', chap.supervisor);
+    formData.append('status', 'Accepted');
+
+    return this.http.put(`${this.url}/chapter/${chap.id}/`, formData).subscribe({
+      next: (data: any) => {
+        this.toastr.success(`Chapter Accept Sent`, 'Success', {timeOut: 2000});
+        console.log(data);
+      },
+      error: (error: any) => {
+        this.toastr.error(`Chapter Update Failed That's All we know`, 'Error', {timeOut: 2000});
+        console.log(error);
+      }
+    });
+  }
+  rejectChap(chap: any): any{
+    const formData = new FormData();
+
+    formData.append('id', chap.id);
+    formData.append('chapter_number', chap.chapter_number);
+    formData.append('chapter_file', chap.chapter_file);
+    formData.append('student', chap.student);
+    formData.append('supervisor', chap.supervisor);
+    formData.append('status', 'Rejected');
+
+    return this.http.put(`${this.url}/chapter/${chap.id}/`, formData).subscribe({
+      next: (data: any) => {
+        this.toastr.success(`Chapter Rejection Sent`, 'Success', {timeOut: 2000});
+        console.log(data);
+      },
+      error: (error: any) => {
+        this.toastr.error(`Chapter Update Failed That's All we know`, 'Error', {timeOut: 2000});
+        console.log(error);
+      }
     });
   }
 

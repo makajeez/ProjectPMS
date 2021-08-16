@@ -12,6 +12,7 @@ import { Router } from '@angular/router'
 export class UploadProjectTopicsComponent implements OnInit {
   uploadTopicForm!: FormGroup;
   loading = false;
+  supervisors: any;
   date: Date = new Date();
 
   constructor(
@@ -26,8 +27,18 @@ export class UploadProjectTopicsComponent implements OnInit {
       title: ['', Validators.required],
       supervisor: ['', Validators.required]
     });
+    this.getSuper();
   }
-
+  getSuper(): any {
+    this.http.get('http://127.0.0.1:8000/super/').subscribe({
+      next: (data: any) => {
+        this.supervisors = data;
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+    });
+  }
   logData(): any{
     this.loading = true;
     return this.http.post('http://127.0.0.1:8000/upload_topic/', JSON.stringify(this.uploadTopicForm.value)).subscribe({
