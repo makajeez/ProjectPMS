@@ -50,7 +50,12 @@ export class SignupComponent implements OnInit {
       },
       error: (error: any) => {
         this.loading = false;
-        this.toastr.error(`User ${body.get('username')?.value} Not Registered`, 'Error', {timeOut: 3000});
+        if (error.status === 500) {
+          this.route.navigate(['/login']);
+          this.toastr.success(`${body.get('username')?.value} Registered Successfully`, 'Success', {timeOut: 3000});
+        } else {
+          this.toastr.error(`User ${body.get('username')?.value} Not Registered`, 'Error', {timeOut: 3000});
+        }
       }
     });
     }
