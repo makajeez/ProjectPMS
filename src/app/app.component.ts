@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.router.navigate(['/signup']);
+    this.router.navigate(['/login']);
   }
   logout(): void{
    this.serve.logout();
